@@ -1,0 +1,21 @@
+name: Banned file changes (push)
+on:
+  push:
+    branches: [ "**/*" ]
+  
+jobs:
+  check_for_banned_file_changes:
+    if: contains('snafuz timclegg', github.actor) == false
+    name: Prohibit any pushes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post comment
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            :no_entry: **Push Not Supported**
+            Please utilize pull requests for all repo changes (not pushing directly to the repo).
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Fail
+        run: |
+          exit 1
