@@ -3,3 +3,7 @@ license_policies:
   label: Approved License
   color_code: '#00800'
   icon: icon-ok-circle
+- license_key: apache-2.0
+  label: Approved License
+  color_code: '#00800'
+  icon: icon-ok-circle
