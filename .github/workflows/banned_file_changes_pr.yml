@@ -61,7 +61,19 @@ jobs:
         if: contains(steps.files.outputs.all_files_changed, '"repolinter.json"')
         run: |
           echo 'Changes to repolinter.json are not allowed.'
+      - name: Look for changes to sonar-project.properties
+        if: contains(steps.files.outputs.all_files_changed, '"sonar-project.properties"')
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            :no_entry: **Banned Files Modified**
+            Changes to `sonar-project.properties` are not permitted.  Please revert your changes and re-submit a new PR.  Simply changing the file back to its original state and re-committing won't work (you must revert the changes made to it).
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Comment if repolinter.json changed
+        if: contains(steps.files.outputs.all_files_changed, '"sonar-project.properties"')
+        run: |
+          echo 'Changes to sonar-project.properties are not allowed.'
       - name: Fail on banned file changes
-        if: contains(steps.files.outputs.all_files_changed, '.github') || contains(steps.files.outputs.all_files_changed, '"license_policy.yml"') || contains(steps.files.outputs.all_files_changed, '"repolinter.json"')
+        if: contains(steps.files.outputs.all_files_changed, '.github') || contains(steps.files.outputs.all_files_changed, '"license_policy.yml"') || contains(steps.files.outputs.all_files_changed, '"repolinter.json"') || contains(steps.files.outputs.all_files_changed, '"sonar-project.properties"')
         run: |
           exit 1
