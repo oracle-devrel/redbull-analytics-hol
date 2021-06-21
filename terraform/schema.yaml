@@ -1,0 +1,306 @@
+# Title shown in Application Information tab.
+title: "RedBull HOL ODS Resource Manager Stack"
+# Sub Title shown in Application Information tab.
+description: "RedBull HOL ODS Resource Manager Stack"
+schemaVersion: 1.1.0
+version: "1.0"
+locale: "en"
+variableGroups:
+  - title: "Hidden"
+    variables:
+      - compartment_ocid
+      - tenancy_ocid
+      - user_ocid
+      - region
+      - fingerprint
+      - private_key_path
+    visible: false
+  - title: "Provision in"
+    variables:
+      - ${region}
+      - ${compartment_ocid}
+    visible: false
+  - title: "IAM Groups/Policies Configuration"
+    variables:
+      - ${ods_group_name}
+      - ${ods_dynamic_group_name}
+      - ${ods_policy_name}
+      - ${ods_root_policy_name}
+  - title: "Network Configuration"
+    variables:
+      - ${ods_vcn_use_existing}
+      - ${ods_vcn_existing}
+      - ${ods_vcn_name}
+      - ${ods_vcn_cidr}
+      - ${ods_subnet_public_existing}
+      - ${ods_subnet_public_name}
+      - ${ods_subnet_public_cidr}
+      - ${ods_subnet_private_existing}
+      - ${ods_subnet_private_name}
+      - ${ods_subnet_private_cidr}
+  - title: "ODS Configuration"
+    variables:
+      - ${enable_ods}
+      - ${ods_project_name}
+      - ${ods_notebook_name}
+      - ${ods_compute_shape}
+      - ${ods_storage_size}
+      - ${ods_number_of_notebooks}
+      - ${functions_enabled}
+  - title: "Vault Configuration"
+    variables:
+      - ${enable_vault}
+      - ${ods_vault_name}
+      - ${ods_vault_type}
+      - ${enable_create_vault_master_key}
+      - ${ods_vault_master_key_name}
+      - ${ods_vault_master_key_length}
+  - title: "Functions/API Gateway Configuration"
+    variables:
+      - ${enable_functions_apigateway}
+      - ${functions_app_name}
+      - ${apigateway_name}
+
+
+variables:
+  enable_ods:
+    type: boolean
+    title: "Create a project and notebook session?"
+    required: true
+    default: true
+  ods_compute_shape:
+    type: enum
+    enum:
+      - VM.Standard.E2.2
+      - VM.Standard.E2.4
+      - VM.Standard.E2.8
+      - VM.Standard2.1
+      - VM.Standard2.2
+      - VM.Standard2.4
+      - VM.Standard2.8
+      - VM.Standard2.16
+      - VM.Standard2.24
+    title: "Notebook Compute Shape"
+    required: true
+    default: "VM.Standard2.1"
+    visible: ${enable_ods}
+  ods_storage_size:
+    type: integer
+    required: true
+    title: "Notebook Storage Size"
+    description: "The size must be between 50 GB and 1,024 GB (1 TB)"
+    minimum: 50
+    maximum: 1024
+    default: 50
+    visible: ${enable_ods}
+  ods_number_of_notebooks:
+    type: integer
+    required: true
+    title: "How many Notebooks would you like to create?"
+    minimum: 1
+    default: 1
+    visible: ${enable_ods}
+  ods_project_name:
+    type: string
+    title: "Project Name"
+    required: true
+    default: "Data Science Project"
+    visible: ${enable_ods}
+  ods_notebook_name:
+    type: string
+    title: "ODS Notebook Session Name"
+    description: "The name of the ODS Notebook to provision"
+    required: true
+    default: "Data Science Notebook"
+    visible: ${enable_ods}
+  region:
+    type: oci:identity:region:name
+    required: true
+    visible: true
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    required: true
+    title: "Compartment"
+    visible: true
+  tenancy_ocid:
+    type: string
+    required: true
+    visible: false
+  ods_vcn_use_existing:
+    type: boolean
+    title: "Use Existing VCN?"
+    required: true
+    default: false
+  ods_vcn_existing:
+    type: oci:core:vcn:id
+    title: "Select VCN"
+    required: ${ods_vcn_use_existing}
+    dependsOn:
+      compartmentId: ${compartment_ocid}
+    visible: ${ods_vcn_use_existing}
+  ods_subnet_public_existing:
+    type: oci:core:subnet:id
+    title: "Select Your Public VCN"
+    description: "This subnet hosts the API Gateway"
+    dependsOn:
+      compartmentId: ${compartment_ocid}
+      vcnId: ${ods_vcn_existing}
+      hidePrivateSubnet: true
+    required: ${ods_vcn_use_existing}
+    visible: ${ods_vcn_use_existing}
+  ods_subnet_private_existing:
+    type: oci:core:subnet:id
+    title: "Select Your Private VCN"
+    description: "This subnet hosts the project, notebooks and Functions application."
+    required: ${ods_vcn_use_existing}
+    dependsOn:
+      compartmentId: ${compartment_ocid}
+      vcnId: ${ods_vcn_existing}
+      hidePublicSubnet: true
+    visible: ${ods_vcn_use_existing}
+  ods_vcn_name:
+    type: string
+    title: "VCN Name"
+    required: true
+    default: "Data Science VCN"
+    visible:
+      not:
+        - ${ods_vcn_use_existing}
+  ods_vcn_cidr:
+    type: string
+    title: "VCN CIDR Space"
+    required: true
+    default: "10.0.0.0/16"
+    visible:
+      not:
+        - ${ods_vcn_use_existing}
+  ods_subnet_public_name:
+    type: string
+    title: "Public Subnet Name"
+    description: "This subnet hosts the API Gateway"
+    required: true
+    default: "Data Science - Public"
+    visible:
+      not:
+        - ${ods_vcn_use_existing}
+  ods_subnet_public_cidr:
+    type: string
+    title: "Public Subnet CIDR Space"
+    required: true
+    default: "10.0.0.0/24"
+    visible:
+      not:
+        - ${ods_vcn_use_existing}
+  ods_subnet_private_name:
+    type: string
+    title: "Private Subnet Name"
+    description: "This subnet hosts the project, notebooks and Functions application."
+    required: true
+    default: "Data Science - Private"
+    visible:
+      not:
+        - ${ods_vcn_use_existing}
+  ods_subnet_private_cidr:
+    type: string
+    title: "Private Subnet CIDR Space"
+    required: true
+    default: "10.0.1.0/24"
+    visible:
+      not:
+        - ${ods_vcn_use_existing}
+  enable_functions_apigateway:
+    type: boolean
+    title: "Provision Functions and API Gateway?"
+    required: true
+    default: false
+  functions_app_name:
+    type: string
+    title: "Application Name"
+    description: "Do not use spaces."
+    required: true
+    default: "DataScienceApp"
+    pattern: "^[a-zA-Z0-9]+$"
+    visible: ${enable_functions_apigateway}
+  apigateway_name:
+    type: string
+    title: "API Gateway Name"
+    required: true
+    default: "Data Science Gateway"
+    visible: ${enable_functions_apigateway}
+  ods_group_name:
+    type: string
+    title: "Group Name for security policies"
+    description: "Do not use spaces."
+    required: true
+    default: "DataScienceGroup"
+    pattern: "^[a-zA-Z0-9]+$"
+  ods_dynamic_group_name:
+    type: string
+    title: "Dynamic Group Name for Data Science, Functions, and API Gateway resources"
+    description: "Do not use spaces."
+    required: true
+    default: "DataScienceDynamicGroup"
+    pattern: "^[a-zA-Z0-9]+$"
+  ods_policy_name:
+    type: string
+    title: "Policy Name (Compartment Level)"
+    description: "Do not use spaces."
+    required: true
+    default: "DataSciencePolicies"
+    pattern: "^[a-zA-Z0-9]+$"
+  ods_root_policy_name:
+    type: string
+    title: "Root Policy Name (Tenancy Level)"
+    description: "Do not use spaces"
+    required: true
+    default: "DataScienceRootPolicies"
+    pattern: "^[a-zA-Z0-9]+$"
+  enable_vault:
+    type: boolean
+    title: "Enable Vault Support ?"
+    description: "Create a vault and master encryption key that you manage and can use to encrypt Data Science resources."
+    required: true
+    default: false
+  ods_vault_name:
+    type: string
+    title: "Name of the Vault to provision"
+    default: "Data Science Vault"
+    required: true
+    visible: ${enable_vault}
+  ods_vault_type:
+    type: enum
+    title: "Vault Type"
+    default: "DEFAULT"
+    required: true
+    visible: ${enable_vault}
+    enum:
+      - DEFAULT
+      - VIRTUAL
+  enable_create_vault_master_key:
+    type: boolean
+    title: "Create a master encryption key in the vault?"
+    required: true
+    default: false
+    visible: ${enable_vault}
+  ods_vault_master_key_name:
+    type: string
+    title: "Name of the master encryption key"
+    default: "DataScienceKey"
+    required: true
+    visible:
+      and:
+        - ${enable_vault}
+        - ${enable_create_vault_master_key}
+  ods_vault_master_key_length:
+    type: enum
+    title: "Length of the master encryption key"
+    default: 32
+    required: true
+    visible:
+      and:
+      - ${enable_vault}
+      - ${enable_create_vault_master_key}
+    enum:
+      - 16
+      - 24
+      - 32
