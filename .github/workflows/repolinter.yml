@@ -55,17 +55,6 @@ jobs:
             Details:
             ${{ steps.analysis.outputs.license_file_details }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Comment if analysis finds blacklisted words
-        if: steps.analysis.outputs.blacklisted_words_found == 'true'
-        uses: mshick/add-pr-comment@v1
-        with:
-          message: |
-            :no_entry: **FAILURE: Blacklisted Words Found**
-            There are some words that we forbid usage of.  It looks like at least one of these was found.  Please remove.
-            
-            Details:
-            ${{ steps.analysis.outputs.blacklisted_words_details }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Comment if analysis finds copyright notice missing
         if: steps.analysis.outputs.copyright_found == 'false'
         uses: mshick/add-pr-comment@v1
@@ -82,7 +71,4 @@ jobs:
         run: exit 1
       - name: Halt pipeline if LICENSE is missing
         if: steps.analysis.outputs.license_file_found == 'false'
-        run: exit 1
-      - name: Halt pipeline if blacklisted word(s) found
-        if: steps.analysis.outputs.blacklisted_words_found == 'true'
         run: exit 1
