@@ -21,18 +21,6 @@
         }
       }
     },
-    "blacklist-words-not-found" : {
-      "level": "error",
-      "rule": {
-        "type": "file-not-contents",
-        "options": {
-          "globsAll": ["**/!(repolinter.json|.github)"],
-          "content": "(crap)",
-          "flags": "i",
-          "nocase": true
-        }
-      }
-    },
     "copyright-notice-present" : {
       "level": "warning",
       "rule": {
