@@ -75,7 +75,7 @@ ls
 
 First off, you'll need to do some pre-deploy setup. That's all detailed [here](https://github.com/cloud-partners/oci-prerequisites).
 
-Next, update the `terraform.tfvars` file and populate it with the information that's specific to your deployment, particularly the `region`, `user_ocid`, `tenancy_ocid`, `private_key_path` and `fingerprint` variables.
+Next, create a `terraform.tfvars` file (feel free to copy the `terraform.tfvars.template` as a starting point) and populate it with the information that's specific to your deployment, particularly the `region`, `user_ocid`, `tenancy_ocid`, `private_key_path` and `fingerprint` variables.
 
 ### Create the Resources
 Run the following commands:
