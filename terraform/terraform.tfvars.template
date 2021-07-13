@@ -2,10 +2,16 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at http:#oss.oracle.com/licenses/upl.
 #
 
+### BEGIN ALWAYS REQUIRED FOR TERRAFORM CLI OR CLOUD SHELL
 region=""
-compartment_id=""
-user_ocid=""
 tenancy_ocid=""
+compartment_ocid=""
+### END ALWAYS REQUIRED FOR TERRAFORM CLI OR CLOUD SHELL
+
+### BEGIN ONLY REQUIRED FOR TERRAFORM CLI
+user_ocid=""
 private_key_path=""
+#### USE ONE ^ OR THE OTHER v
 private_key_password=""
 fingerprint=""
+### END ONLY REQUIRED FOR TERRAFORM CLI

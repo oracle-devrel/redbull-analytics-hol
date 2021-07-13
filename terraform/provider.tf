@@ -10,12 +10,19 @@ terraform {
 provider "oci" {
   region       = var.region
   tenancy_ocid = var.tenancy_ocid
-  ###### Uncomment the below if running locally using terraform and not as OCI Resource Manager stack #####
+  
+  ### BEGIN UNCOMMENT FOR TERRAFORM CLI (running locally)
   # user_ocid = var.user_ocid
   # fingerprint = var.fingerprint
   # private_key = local.private_key
+  #### USE ONE ^ OR THE OTHER v
   # private_key_path = var.private_key_path
   # private_key_password = var.private_key_password
+  ### END UNCOMMENT FOR TERRAFORM CLI (running locally)
+  
+  ### BEGIN UNCOMMENT FOR OCI CLOUD SHELL
+  # auth = "InstancePrincipal"
+  ### END UNCOMMENT FOR OCI CLOUD SHELL
 }
 
 # Home Provider
@@ -23,10 +30,17 @@ provider "oci" {
   alias        = "home"
   region       = var.region
   tenancy_ocid = var.tenancy_ocid
-  ###### Uncomment the below if running locally using terraform and as not OCI Resource Manager stack #####
+  
+  ### BEGIN UNCOMMENT FOR TERRAFORM CLI (running locally)
   # user_ocid = var.user_ocid
   # fingerprint = var.fingerprint
   # private_key = local.private_key
+  #### USE ONE ^ OR THE OTHER v
   # private_key_path = var.private_key_path
   # private_key_password = var.private_key_password
+  ### END UNCOMMENT FOR TERRAFORM CLI (running locally)
+  
+  ### BEGIN UNCOMMENT FOR OCI CLOUD SHELL
+  # auth = "InstancePrincipal"
+  ### END UNCOMMENT FOR OCI CLOUD SHELL
 }

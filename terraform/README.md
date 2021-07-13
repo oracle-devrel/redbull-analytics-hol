@@ -9,14 +9,20 @@ Local OCI groups are used, which can be mapped to a federated group (useful when
 ## OCI Prerequisites
 
 ### Required Permissions
-You will need permission to manage the following types of resources in your OCI tenancy:
+You will need permission to manage the following types of resources in your OCI tenancy, or you may specify a specific compartment:
 * `vcns`
-* `internet-gateways`
-* `load-balancers`
+* `nat-gateways`
 * `route-tables`
 * `security-lists`
 * `subnets`
 * `instances`
+* `policies`
+* `oci_datascience_project`
+* `oci_datascience_notebook_session`
+
+Permissions for managing the following resource types is needed (at the tenancy level):
+* `groups`
+* `dynamic-groups`
 
 If you don't have the required permissions, contact your tenancy administrator.  See [Policy Reference](https://docs.cloud.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm)for more information around IAM permissions.
 
@@ -31,7 +37,8 @@ You'll need available resource quotas and permissions to create the following re
 * 1 x Route Table
 * 1 x Security List
 * 1 x Compute instance (1 x VM 2.1 or whatever shape you select)
-* 1 x Function Application
+* 1 x Functions Application
+* 1 x Data Science Project (and notebook session)
 
 If you don't have the required service limits/quota, contact your tenancy administrator.  See [Service Limits](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm), [Compartment Quotas](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcequotas.htm)for more information on service limits and quotas.
 
@@ -68,21 +75,23 @@ ls
 ### Prerequisites
 First off, you'll need to do some pre-deploy setup. That's all detailed [here](https://github.com/cloud-partners/oci-prerequisites).
 
-Next, create a `terraform.tfvars` file (feel free to copy the `terraform.tfvars.template` as a starting point) and populate it with the information that's specific to your deployment, particularly the `region`, `user_ocid`, `tenancy_ocid`, `compartment_ocid`, `private_key_path` (or paste the contents of your private key into the `private_key` variable) and `fingerprint` variables.
-
-Modify the `provider.tf` file, uncommenting the following attributes:
+Next, create a `terraform.tfvars` file (feel free to copy the `terraform.tfvars.template` as a starting point) and populate it with the information that's specific to your deployment.  For Cloud Shell, the `region`, `tenancy_ocid`, `compartment_ocid` variables must be provided (at minimum).  Feel free to provide additional variable values (overriding the defaults in `variables.tf`) as-needed for your deployment to customize resource names, behavior, etc.  Here's a sample `terraform.tfvars` file for Cloud Shell:
 ```
-  # user_ocid = var.user_ocid
-  # fingerprint = var.fingerprint
-  # private_key = local.private_key
-  # private_key_path = var.private_key_path
-  # private_key_password = var.private_key_password
+region=""
+tenancy_ocid=""
+compartment_ocid=""
 ```
+(make sure that you put values in)
 
-Note that only `private_key` or `private_key_path` is needed (no need to use both).
+Modify the `provider.tf` file, uncommenting the following attributes (in both provider definitions):
+```
+  ### BEGIN UNCOMMENT FOR OCI CLOUD SHELL
+  # auth = "InstancePrincipal"
+  ### END UNCOMMENT FOR OCI CLOUD SHELL
+```
 
 ### Create the Resources
-Run the following commands:
+Run the following commands from within the Cloud Shell session:
 
 ```
 terraform init
@@ -119,15 +128,29 @@ ls
 ### Prerequisites
 First off, you'll need to do some pre-deploy setup. That's all detailed [here](https://github.com/cloud-partners/oci-prerequisites).
 
-Next, create a `terraform.tfvars` file (feel free to copy the `terraform.tfvars.template` as a starting point) and populate it with the information that's specific to your deployment, particularly the `region`, `user_ocid`, `tenancy_ocid`, `compartment_ocid`, `private_key_path` (or paste the contents of your private key into the `private_key` variable) and `fingerprint` variables.
-
-Modify the `provider.tf` file, uncommenting the following attributes:
+Next, create a `terraform.tfvars` file (feel free to copy the `terraform.tfvars.template` as a starting point) and populate it with the information that's specific to your deployment, particularly the `region`, `user_ocid`, `tenancy_ocid`, `compartment_ocid`, `private_key_path` (or paste the contents of your private key into the `private_key` variable) and `fingerprint` variables.  Feel free to provide additional variable values (overriding the defaults in `variables.tf`) as-needed for your deployment to customize resource names, behavior, etc.  Here's a sample `terraform.tfvars` file for Cloud Shell:
 ```
+region=""
+tenancy_ocid=""
+compartment_ocid=""
+user_ocid=""
+private_key_path=""
+#### USE ONE ^ OR THE OTHER v
+private_key_password=""
+fingerprint=""
+```
+(make sure that you put values in)
+
+Modify the `provider.tf` file, uncommenting the following attributes (in both provider definitions):
+```
+  ### BEGIN UNCOMMENT FOR TERRAFORM CLI (running locally)
   # user_ocid = var.user_ocid
   # fingerprint = var.fingerprint
   # private_key = local.private_key
+  #### USE ONE ^ OR THE OTHER v
   # private_key_path = var.private_key_path
   # private_key_password = var.private_key_password
+  ### END UNCOMMENT FOR TERRAFORM CLI (running locally)
 ```
 
 Note that only `private_key` or `private_key_path` is needed (no need to use both).
@@ -147,4 +170,3 @@ When you no longer need the deployment, you can run this command to destroy the 
 ```
 terraform destroy
 ```
-
