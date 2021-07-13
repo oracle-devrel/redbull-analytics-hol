@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Oracle and/or its affiliates.
+# Copyright (c) 2021 Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at http://oss.oracle.com/licenses/upl.
 #
 
@@ -12,6 +12,13 @@ resource "oci_core_vcn" "ods-vcn" {
   compartment_id = var.compartment_ocid
   dns_label      = "ods"
   display_name   = var.ods_vcn_name
+  
+  lifecycle {
+    ignore_changes = [ defined_tags["Oracle-Tags.CreatedBy"], defined_tags["Oracle-Tags.CreatedOn"] ]
+  }
+  defined_tags = {
+    "${oci_identity_tag_namespace.devrel.name}.${oci_identity_tag.release.name}" = local.release
+  }
 }
 
 #*************************************
@@ -31,6 +38,13 @@ resource "oci_core_subnet" "ods-private-subnet" {
   dns_label                  = "odsprivate"
   route_table_id             = oci_core_route_table.ods-private-rt[0].id
   security_list_ids          = [oci_core_security_list.ods-private-sl[0].id]
+  
+  lifecycle {
+    ignore_changes = [ defined_tags["Oracle-Tags.CreatedBy"], defined_tags["Oracle-Tags.CreatedOn"] ]
+  }
+  defined_tags = {
+    "${oci_identity_tag_namespace.devrel.name}.${oci_identity_tag.release.name}" = local.release
+  }
 }
 
 
@@ -43,7 +57,14 @@ resource "oci_core_nat_gateway" "ods-nat-gateway" {
   
   compartment_id = var.compartment_ocid
   vcn_id         = oci_core_vcn.ods-vcn[0].id
-  display_name = "Data Science Nat Gateway"
+  display_name = "Data Science NAT Gateway"
+  
+  lifecycle {
+    ignore_changes = [ defined_tags["Oracle-Tags.CreatedBy"], defined_tags["Oracle-Tags.CreatedOn"] ]
+  }
+  defined_tags = {
+    "${oci_identity_tag_namespace.devrel.name}.${oci_identity_tag.release.name}" = local.release
+  }
 }
 
 
@@ -63,6 +84,13 @@ resource "oci_core_route_table" "ods-private-rt" {
     network_entity_id = oci_core_nat_gateway.ods-nat-gateway[0].id
     destination       = "0.0.0.0/0"
     destination_type  = "CIDR_BLOCK"
+  }
+  
+  lifecycle {
+    ignore_changes = [ defined_tags["Oracle-Tags.CreatedBy"], defined_tags["Oracle-Tags.CreatedOn"] ]
+  }
+  defined_tags = {
+    "${oci_identity_tag_namespace.devrel.name}.${oci_identity_tag.release.name}" = local.release
   }
 }
 
@@ -89,5 +117,12 @@ resource "oci_core_security_list" "ods-private-sl" {
     source      = var.ods_vcn_cidr
     source_type = "CIDR_BLOCK"
     stateless   = false
+  }
+  
+  lifecycle {
+    ignore_changes = [ defined_tags["Oracle-Tags.CreatedBy"], defined_tags["Oracle-Tags.CreatedOn"] ]
+  }
+  defined_tags = {
+    "${oci_identity_tag_namespace.devrel.name}.${oci_identity_tag.release.name}" = local.release
   }
 }

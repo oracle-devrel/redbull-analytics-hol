@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Oracle and/or its affiliates.
+# Copyright (c) 2021 Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at http://oss.oracle.com/licenses/upl.
 #
 
@@ -150,4 +150,5 @@ variable "private_key_password" {
 locals {
   private_subnet_id = var.ods_vcn_use_existing ? var.ods_subnet_private_existing : oci_core_subnet.ods-private-subnet[0].id
   private_key = try(file(var.private_key_path), var.private_key)
+  release = "1.0"
 }

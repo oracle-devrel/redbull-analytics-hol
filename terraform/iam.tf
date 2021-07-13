@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Oracle and/or its affiliates.
+# Copyright (c) 2021 Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at http://oss.oracle.com/licenses/upl.
 #
 
@@ -12,6 +12,13 @@ resource "oci_identity_group" "ods-group" {
   compartment_id = var.tenancy_ocid
   description    = "Data Science Group"
   name           = var.ods_group_name
+  
+  lifecycle {
+    ignore_changes = [ defined_tags["Oracle-Tags.CreatedBy"], defined_tags["Oracle-Tags.CreatedOn"] ]
+  }
+  defined_tags = {
+    "${oci_identity_tag_namespace.devrel.name}.${oci_identity_tag.release.name}" = local.release
+  }
 }
 
 #*************************************
@@ -24,6 +31,13 @@ resource "oci_identity_dynamic_group" "ods-dynamic-group" {
   description = "Data Science Dynamic Group"
   name = var.ods_dynamic_group_name
   matching_rule = "any {all {resource.type='fnfunc',resource.compartment.id='${var.compartment_ocid}'}, all {resource.type='ApiGateway',resource.compartment.id='${var.compartment_ocid}'}, all {resource.type='datasciencenotebooksession',resource.compartment.id='${var.compartment_ocid}'} }"
+  
+  lifecycle {
+    ignore_changes = [ defined_tags["Oracle-Tags.CreatedBy"], defined_tags["Oracle-Tags.CreatedOn"] ]
+  }
+  defined_tags = {
+    "${oci_identity_tag_namespace.devrel.name}.${oci_identity_tag.release.name}" = local.release
+  }
 }
 
 #*************************************
@@ -50,4 +64,11 @@ resource "oci_identity_policy" "ods-policy" {
     "Allow service FaaS to read repos ${data.oci_identity_compartment.current_compartment.id == var.tenancy_ocid ? "in tenancy" : "in compartment ${data.oci_identity_compartment.current_compartment.name}"}",
     "Allow group ${var.ods_group_name} to manage repos ${data.oci_identity_compartment.current_compartment.id == var.tenancy_ocid ? "in tenancy" : "in compartment ${data.oci_identity_compartment.current_compartment.name}"}",
   ]
+  
+  lifecycle {
+    ignore_changes = [ defined_tags["Oracle-Tags.CreatedBy"], defined_tags["Oracle-Tags.CreatedOn"] ]
+  }
+  defined_tags = {
+    "${oci_identity_tag_namespace.devrel.name}.${oci_identity_tag.release.name}" = local.release
+  }
 }

@@ -19,6 +19,8 @@ You will need permission to manage the following types of resources in your OCI 
 * `policies`
 * `oci_datascience_project`
 * `oci_datascience_notebook_session`
+* `oci_identity_tag_namespace`
+* `oci_identity_tag`
 
 Permissions for managing the following resource types is needed (at the tenancy level):
 * `groups`
@@ -39,6 +41,8 @@ You'll need available resource quotas and permissions to create the following re
 * 1 x Compute instance (1 x VM 2.1 or whatever shape you select)
 * 1 x Functions Application
 * 1 x Data Science Project (and notebook session)
+* 1 x Tag namespace
+* 1 x Defined tag
 
 If you don't have the required service limits/quota, contact your tenancy administrator.  See [Service Limits](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm), [Compartment Quotas](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcequotas.htm)for more information on service limits and quotas.
 
