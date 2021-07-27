@@ -1,11 +1,11 @@
-# RedBull Racing Analytics Hands-On Labs
+# Red Bull Racing Analytics Hands-On Labs
 
 [![License: UPL](https://img.shields.io/badge/license-UPL-green)](https://img.shields.io/badge/license-UPL-green) [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=oracle-devrel_redbull-analytics-hol)](https://sonarcloud.io/dashboard?id=oracle-devrel_redbull-analytics-hol)
 
 ## Introduction
-Are you interested in learning machine learning (ML)?  How about doing this in the context of the exciting world of F1 racing?!  Get your ML skills bootstrapped here with Oracle and RedBull Racing!
+Are you interested in learning machine learning (ML)?  How about doing this in the context of the exciting world of F1 racing?!  Get your ML skills bootstrapped here with Oracle and Red Bull Racing!
 
-![RedBull F1 Race Car](./docs/RedBullcar.png)
+![Red Bull F1 Race Car](./docs/SI202105091303_hires_jpeg_24bit_rgb.jpg)
 
 This tutorial teaches ML analytics with a series of hands-on labs (HOLs) using the [Data Science](https://docs.oracle.com/en-us/iaas/data-science/using/data-science.htm) service in [Oracle Cloud Infrastructure](https://cloud.oracle.com/).
 
@@ -29,7 +29,7 @@ There are required OCI resources (see the [Terraform documentation](./terraform/
 None at this time.
 
 ## URLs
-* [Oracle and RedBull partnership announcement](https://www.oracle.com/news/announcement/oracle-cloud-red-bull-racing-honda-032521.html)
+* [Oracle and Red Bull partnership announcement](https://www.oracle.com/news/announcement/oracle-cloud-red-bull-racing-honda-032521.html)
 
 ## Contributing
 This project is open source.  Please submit your contributions by forking this repository and submitting a pull request!  Oracle appreciates any contributions that are made by the open source community.
