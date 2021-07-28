@@ -14,6 +14,7 @@ variableGroups:
       - fingerprint
       - private_key_path
       - private_key_password
+      - private_key
       - ${region}
       - ${compartment_ocid}
     visible: false
@@ -21,18 +22,16 @@ variableGroups:
     variables:
       - ${create_ods_group}
       - ${ods_group_name}
+      - ${ods_group_name_randomized}
       - ${ods_dynamic_group_name}
+      - ${ods_dynamic_group_name_randomized}
       - ${ods_policy_name}
-      # - ${ods_root_policy_name}
   - title: "Network Configuration"
     variables:
       - ${ods_vcn_use_existing}
       - ${ods_vcn_existing}
       - ${ods_vcn_name}
       - ${ods_vcn_cidr}
-      # - ${ods_subnet_public_existing}
-      # - ${ods_subnet_public_name}
-      # - ${ods_subnet_public_cidr}
       - ${ods_subnet_private_existing}
       - ${ods_subnet_private_name}
       - ${ods_subnet_private_cidr}
@@ -44,15 +43,6 @@ variableGroups:
       - ${ods_compute_shape}
       - ${ods_storage_size}
       - ${ods_number_of_notebooks}
-      # - ${functions_enabled}
-  # - title: "Vault Configuration"
-  #   variables:
-  #     - ${enable_vault}
-  #     - ${ods_vault_name}
-  #     - ${ods_vault_type}
-  #     - ${enable_create_vault_master_key}
-  #     - ${ods_vault_master_key_name}
-  #     - ${ods_vault_master_key_length}
   - title: "Functions/API Gateway Configuration"
     variables:
       - ${enable_functions}
@@ -189,7 +179,7 @@ variables:
   create_ods_group:
     type: boolean
     title: "Should a group be created?"
-    description: "True = yes, create a new group.  False = use an existing group (do not create a group)."
+    description: "To use an existing group, uncheck this setting and provide the group name in 'Group Name for security policies'"
     required: true
     default: true
   ods_group_name:
@@ -206,6 +196,16 @@ variables:
     required: true
     default: "DataScienceDynamicGroup"
     pattern: "^[a-zA-Z0-9_-]+$"
+  ods_group_name_randomized:
+    type: boolean
+    title: "Append random characters to ODS group name?"
+    required: true
+    default: true
+  ods_dynamic_group_name_randomized:
+    type: boolean
+    title: "Append random characters to the ODS dynamic group name?"
+    required: true
+    default: true
   ods_policy_name:
     type: string
     title: "Policy Name (Compartment Level)"

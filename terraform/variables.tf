@@ -100,9 +100,19 @@ variable "ods_group_name" {
   default = "DataScienceGroup"
   description = "ODS IAM Group Name (no spaces)"
 }
+variable "ods_group_name_randomized" {
+  type    = bool
+  default = true
+  description = "Whether or not randomized characters should be appended to the group name"
+}
 variable "ods_dynamic_group_name" {
   default = "DataScienceDynamicGroup"
   description = "ODS IAM Dynamic Group Name (no spaces)"
+}
+variable "ods_dynamic_group_name_randomized" {
+  type    = bool
+  default = true
+  description = "Whether or not randomized characters should be appended to the dynamic group name"
 }
 variable "ods_policy_name" {
   default = "DataSciencePolicies"
@@ -151,4 +161,6 @@ locals {
   private_subnet_id = var.ods_vcn_use_existing ? var.ods_subnet_private_existing : oci_core_subnet.ods-private-subnet[0].id
   private_key = try(file(var.private_key_path), var.private_key)
   release = "1.0"
+  ods_group_name = var.ods_group_name_randomized ? "${var.ods_group_name}_${random_id.groups.hex}" : var.ods_group_name
+  ods_dynamic_group_name = var.ods_dynamic_group_name_randomized ? "${var.ods_dynamic_group_name}_${random_id.groups.hex}" : var.ods_dynamic_group_name
 }
