@@ -38,14 +38,39 @@ Registered lab participants should have received $500 in credits to use for Data
 
 The notebooks are numbered and you'll progress through them in order. These will walk you through collecting and analyzing the data we'll use to predict some races.
 
+
+## Using the Jupyter Lab
+
+The Jupyter notebooks are ordered by number, and you'll progress through them in sequence. 
+
+All of the data and models for this lab are already stored in this directory. You can run the notebooks to see what they do, but it's not required to see the finished product. Note that running the notebook `04.ML_Modelling` takes about 40 minutes, so if you want to play with it, save it until after the live lab.
+
+These notebooks use data gathered from ergast.com. The data gathering process takes some time, so we've gone ahead and pulled the data in for you. However, if you want to see how it's done, take a look in the `from_scratch` directory, where you'll find the original scripts that gathered the remote data.
+
+See the notes in each notebook for a bit of explanation as you go. If you have a basic understanding of Python, you should also be able to see the nitty gritty of what's happening.
+
 ## Developer Journey Map
 
-Execute all notebooks in sequence:
+View each notebook in numeric order:
 
 - 01_0.Formule1_Data_Collection.ipynb
 - 01_1.Weather_Data_Collection.ipynb
 - 01_2.Qualifying_Data_Collection.ipynb
 - 02.Data_Preparation_merging.ipynb
-- 03.Redbull_EDA.ipynb
+- 03.f1_analysis_EDA.ipynb
 - 04.ML_Modelling.ipynb
 - 05.ML_Model_Serving.ipynb
+
+## Starting The Web Application
+
+To see the results of the lab, you'll need to start the web server using Terminal.
+
+1. In the menu at the top of the page, select **File->New->Terminal**.
+2. Enter the following commands, hitting return after each one (feel free to copy and paste)
+
+        cd /home/opc/redbull-analytics-hol/beginners/web
+        source /home/opc/redbullenv/bin/activate
+        python3 app.py
+3. Open a web browser to the public IP of your Jupyter Lab, but use port 8080 instead of port 8001:
+
+        http://xxx.xxx.xxx.xxx:8080
