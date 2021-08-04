@@ -12,12 +12,12 @@ provider "oci" {
   tenancy_ocid = var.tenancy_ocid
   
   ### BEGIN UNCOMMENT FOR TERRAFORM CLI (running locally)
-  user_ocid = var.user_ocid
-  fingerprint = var.fingerprint
+  # user_ocid = var.user_ocid
+  # fingerprint = var.fingerprint
   # private_key = local.private_key
   #### USE ONE ^ OR THE OTHER v
-  private_key_path = var.private_key_path
-  private_key_password = var.private_key_password
+  # private_key_path = var.private_key_path
+  # private_key_password = var.private_key_password
   ### END UNCOMMENT FOR TERRAFORM CLI (running locally)
   
   ### BEGIN UNCOMMENT FOR OCI CLOUD SHELL
@@ -32,12 +32,12 @@ provider "oci" {
   tenancy_ocid = var.tenancy_ocid
   
   ### BEGIN UNCOMMENT FOR TERRAFORM CLI (running locally)
-  user_ocid = var.user_ocid
-  fingerprint = var.fingerprint
+  # user_ocid = var.user_ocid
+  # fingerprint = var.fingerprint
   # private_key = local.private_key
   #### USE ONE ^ OR THE OTHER v
-  private_key_path = var.private_key_path
-  private_key_password = var.private_key_password
+  # private_key_path = var.private_key_path
+  # private_key_password = var.private_key_password
   ### END UNCOMMENT FOR TERRAFORM CLI (running locally)
   
   ### BEGIN UNCOMMENT FOR OCI CLOUD SHELL
