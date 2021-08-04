@@ -1,0 +1,30 @@
+[
+  {
+    "action": "create_zip",
+    "file_name": "redbull-analytics-hol-latest.zip",
+    "files": [
+      {
+        "src_pattern": "terraform/*.tf",
+        "dst_path": ".",
+        "exclude": [
+          "terraform/provider.tf"
+        ]
+      },
+      {
+        "src": "LICENSE"
+      },
+      {
+        "src": "terraform/schema.yaml",
+        "dst": "schema.yaml"
+      },
+      {
+        "src": "terraform/orm/provider.tf",
+        "dst": "provider.tf"
+      }
+    ]
+  },
+  {
+    "action": "upload_file",
+    "file_name": "redbull-analytics-hol-latest.zip"
+  }
+]
