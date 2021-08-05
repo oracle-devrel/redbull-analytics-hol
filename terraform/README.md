@@ -54,9 +54,11 @@ If you don't have the required service limits/quota, contact your tenancy admini
 
 <img width="1364" alt="sign-up-page" src="https://user-images.githubusercontent.com/12158601/128405323-2df0fb17-a3ab-423c-9836-b6f8b91bd4c8.png">
 
-2. Click the link sent to your email and continue adding account details, including adding payment verification (you won't be charged unless you want to upgrade your Always-free tier account at a later date). After reviewing the terms and services for your Oracle Cloud Services account, click **Start my free trial**.
+2. Click the link sent to your email and continue adding account details, including adding payment verification (you won't be charged unless you want to upgrade your Always-free tier account at a later date). 
 
-<img width="2047" alt="startMyFreeTrial" src="https://user-images.githubusercontent.com/12158601/128407153-85cc6e0a-6975-4daa-92ef-984eccd6028d.png">
+After reviewing the terms and services for your Oracle Cloud Services account, click **Start my free trial**.
+
+<img width="2047" alt="startMyFreeTrial1" src="https://user-images.githubusercontent.com/12158601/128408494-80de1447-2514-44c3-a8ca-afc0af87453f.png">
 
 3. Wait for your account to be provisioned before logging in. 
 
