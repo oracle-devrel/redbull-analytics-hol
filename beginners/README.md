@@ -10,7 +10,7 @@ Registered lab participants should have received $500 in credits to use for Data
 
 1. Click the button below to begin the deploy of the Data Science stack and custom image:
 
-    [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/operard/formule1-analytics-hol/releases/latest/download/redbullcompute.zip)
+    [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/redbull-analytics-hol/releases/latest/download/redbull-analytics-hol-latest.zip)
 2. If needed, log into your account. You should then be presented with the **Create Stack** page. Under *Stack Information* (the first screen), check the box *I have reviewed and accept the Oracle Terms of Use*. Once that box is checked, the information for the stack will be populated automatically.
     
     ![Create Stack](./docs/red-bull-hol-1a-create-stack-information.jpg)
