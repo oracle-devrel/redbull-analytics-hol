@@ -48,13 +48,17 @@ If you don't have the required service limits/quota, contact your tenancy admini
 
 ## Sign up for an Always-Free tier OCI account
 
-1. Visit the [Oracle Cloud Free Tier](https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US) page.
+1. Visit the [Oracle Cloud Free Tier](https://signup.cloud.oracle.com/?language=en_US&sourceType=:ow:de:te::::RC_WWMK210628P00062:FreeTierSignup&intcmp=:ow:de:te::::RC_WWMK210628P00062:FreeTierSignup) page.
 
    Enter your account information and click **Verify my email**.
 
-2. Click the link sent to your email and continue adding account details, like your account name and password. After reviewing the terms and services for your Oracle Cloud Services account, click **Start my free trial**.
+<img width="1364" alt="sign-up-page" src="https://user-images.githubusercontent.com/12158601/128405323-2df0fb17-a3ab-423c-9836-b6f8b91bd4c8.png">
 
-    If your connection times out, click the **Sign in to Oracle Cloud** button in an email with the subject "Get Started Now with Oracle Cloud" and enter your login information on the SSO page.
+2. Click the link sent to your email and continue adding account details, including adding payment verification (you won't be charged unless you want to upgrade your Always-free tier account at a later date). After reviewing the terms and services for your Oracle Cloud Services account, click **Start my free trial**.
+
+<img width="2047" alt="startMyFreeTrial" src="https://user-images.githubusercontent.com/12158601/128407153-85cc6e0a-6975-4daa-92ef-984eccd6028d.png">
+
+3. Wait for your account to be provisioned before logging in. 
 
 ## Deploy Using Oracle Resource Manager
 1. Click [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/redbull-analytics-hol/releases/latest/download/redbull-analytics-hol-latest.zip)
