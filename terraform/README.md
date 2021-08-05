@@ -60,7 +60,13 @@ After reviewing the terms and services for your Oracle Cloud Services account, c
 
 <img width="2047" alt="startMyFreeTrial1" src="https://user-images.githubusercontent.com/12158601/128408494-80de1447-2514-44c3-a8ca-afc0af87453f.png">
 
-3. Wait for your account to be provisioned before logging in. 
+3. Wait for your account to be provisioned. This should take approximately two minutes.
+
+<img width="2047" alt="waitForSetUp" src="https://user-images.githubusercontent.com/12158601/128412713-67bf96b2-dd42-4e6b-b4d0-715441e6f2d7.png">
+
+4. After your account is ready, the Get Started tab of your account displays.
+
+<img width="2048" alt="successSignUp" src="https://user-images.githubusercontent.com/12158601/128412847-ed99fb08-36c2-4918-a0c3-ba5b5fc3396d.png">
 
 ## Deploy Using Oracle Resource Manager
 1. Click [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/redbull-analytics-hol/releases/latest/download/redbull-analytics-hol-latest.zip)
