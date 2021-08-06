@@ -1,7 +1,7 @@
 # Title shown in Application Information tab.
-title: "RedBull HOL ODS Resource Manager Stack"
+title: "RedBull Honda Racing Analytics Hands-on Lab Environment"
 # Sub Title shown in Application Information tab.
-description: "RedBull HOL ODS Resource Manager Stack"
+description: "RedBull Honda Racing Analytics Hands-on Lab Environment"
 schemaVersion: 1.1.0
 version: "1.0"
 locale: "en"
@@ -15,201 +15,30 @@ variableGroups:
       - private_key_path
       - private_key_password
       - private_key
-      - ${region}
-      - ${compartment_ocid}
+      - region
+      - compartment_ocid
     visible: false
-  - title: "IAM Groups/Policies Configuration"
+  - title: "Configuration"
     variables:
-      - ${create_ods_group}
-      - ${ods_group_name}
-      - ${ods_group_name_randomized}
-      - ${ods_dynamic_group_name}
-      - ${ods_dynamic_group_name_randomized}
-      - ${ods_policy_name}
-  - title: "Network Configuration"
-    variables:
-      - ${ods_vcn_use_existing}
-      - ${ods_vcn_existing}
-      - ${ods_vcn_name}
-      - ${ods_vcn_cidr}
-      - ${ods_subnet_private_existing}
-      - ${ods_subnet_private_name}
-      - ${ods_subnet_private_cidr}
-  - title: "ODS Configuration"
-    variables:
-      - ${enable_ods}
-      - ${ods_project_name}
-      - ${ods_notebook_name}
-      - ${ods_compute_shape}
-      - ${ods_storage_size}
-      - ${ods_number_of_notebooks}
-  - title: "Functions/API Gateway Configuration"
-    variables:
-      - ${enable_functions}
-      - ${functions_app_name}
-      - ${apigateway_name}
-
+      - redbull_compartment
+      - free_tier_compute
+      - ssh_public_key
 
 variables:
-  enable_ods:
+  free_tier_compute:
     type: boolean
-    title: "Create a project and notebook session?"
-    required: true
-    default: true
-  ods_compute_shape:
-    type: enum
-    enum:
-      - VM.Standard.E2.2
-      - VM.Standard.E2.4
-      - VM.Standard.E2.8
-      - VM.Standard2.1
-      - VM.Standard2.2
-      - VM.Standard2.4
-      - VM.Standard2.8
-      - VM.Standard2.16
-      - VM.Standard2.24
-    title: "Notebook Compute Shape"
-    required: true
-    default: "VM.Standard2.1"
-    visible: ${enable_ods}
-  ods_storage_size:
-    type: integer
-    required: true
-    title: "Notebook Storage Size"
-    description: "The size must be between 50 GB and 1,024 GB (1 TB)"
-    minimum: 50
-    maximum: 1024
-    default: 50
-    visible: ${enable_ods}
-  ods_number_of_notebooks:
-    type: integer
-    required: true
-    title: "How many Notebooks would you like to create?"
-    minimum: 1
-    default: 1
-    visible: ${enable_ods}
-  ods_project_name:
-    type: string
-    title: "Project Name"
-    required: true
-    default: "Data Science Project"
-    visible: ${enable_ods}
-  ods_notebook_name:
-    type: string
-    title: "ODS Notebook Session Name"
-    description: "The name of the ODS Notebook to provision"
-    required: true
-    default: "Data Science Notebook"
-    visible: ${enable_ods}
-  region:
-    type: oci:identity:region:name
-    required: true
-    visible: true
-  tenancy_ocid:
-    type: string
-    required: true
-    visible: false
-  ods_vcn_use_existing:
-    type: boolean
-    title: "Use Existing VCN?"
+    title: "Use Always-Free Shape?"
+    description: "Should an always free-tier compute shape be used?  If not selected, a shape that's eligible in a trial period or a paid account is used."
     required: true
     default: false
-  ods_vcn_existing:
-    type: oci:core:vcn:id
-    title: "Select VCN"
-    required: ${ods_vcn_use_existing}
-    dependsOn:
-      compartmentId: ${compartment_ocid}
-    visible: ${ods_vcn_use_existing}
-  ods_subnet_private_existing:
-    type: oci:core:subnet:id
-    title: "Select Your Private VCN"
-    description: "This subnet hosts the project, notebooks and Functions application."
-    required: ${ods_vcn_use_existing}
-    dependsOn:
-      compartmentId: ${compartment_ocid}
-      vcnId: ${ods_vcn_existing}
-    visible: ${ods_vcn_use_existing}
-  ods_vcn_name:
+  redbull_compartment:
     type: string
-    title: "VCN Name"
+    title: "Compartment Name"
+    description: "The name of the compartment that will be created."
     required: true
-    default: "Data Science VCN"
-    visible:
-      not:
-        - ${ods_vcn_use_existing}
-  ods_vcn_cidr:
-    type: string
-    title: "VCN CIDR Space"
+    default: "redbullhol"
+  ssh_public_key:
+    title: "Compute SSH Public Key"
+    description: "The public to install on the compute for SSH access."
+    type: oci:core:ssh:publickey
     required: true
-    default: "10.0.0.0/16"
-    visible:
-      not:
-        - ${ods_vcn_use_existing}
-  ods_subnet_private_name:
-    type: string
-    title: "Private Subnet Name"
-    description: "This subnet hosts the project, notebooks and Functions application."
-    required: true
-    default: "Data Science - Private"
-    visible:
-      not:
-        - ${ods_vcn_use_existing}
-  ods_subnet_private_cidr:
-    type: string
-    title: "Private Subnet CIDR Space"
-    required: true
-    default: "10.0.1.0/24"
-    visible:
-      not:
-        - ${ods_vcn_use_existing}
-  enable_functions:
-    type: boolean
-    title: "Provision Functions?"
-    required: true
-    default: true
-  functions_app_name:
-    type: string
-    title: "Application Name"
-    description: "Do not use spaces."
-    required: true
-    default: "DataScienceApp"
-    pattern: "^[a-zA-Z0-9]+$"
-    visible: ${enable_functions_apigateway}
-  create_ods_group:
-    type: boolean
-    title: "Should a group be created?"
-    description: "To use an existing group, uncheck this setting and provide the group name in 'Group Name for security policies'"
-    required: true
-    default: true
-  ods_group_name:
-    type: string
-    title: "Group Name for security policies"
-    description: "Do not use spaces."
-    required: true
-    default: "DataScienceGroup"
-    pattern: "^[a-zA-Z0-9_-]+$"
-  ods_dynamic_group_name:
-    type: string
-    title: "Dynamic Group Name for Data Science, Functions, and API Gateway resources"
-    description: "Do not use spaces."
-    required: true
-    default: "DataScienceDynamicGroup"
-    pattern: "^[a-zA-Z0-9_-]+$"
-  ods_group_name_randomized:
-    type: boolean
-    title: "Append random characters to ODS group name?"
-    required: true
-    default: true
-  ods_dynamic_group_name_randomized:
-    type: boolean
-    title: "Append random characters to the ODS dynamic group name?"
-    required: true
-    default: true
-  ods_policy_name:
-    type: string
-    title: "Policy Name (Compartment Level)"
-    description: "Do not use spaces."
-    required: true
-    default: "DataSciencePolicies"
-    pattern: "^[a-zA-Z0-9_-]+$"
