@@ -8,21 +8,21 @@ locale: "en"
 variableGroups:
   - title: "Hidden"
     variables:
-      - tenancy_ocid
-      - user_ocid
-      - region
-      - fingerprint
-      - private_key_path
-      - private_key_password
-      - private_key
-      - region
-      - compartment_ocid
+      - ${tenancy_ocid}
+      - ${user_ocid}
+      - ${region}
+      - ${fingerprint}
+      - ${private_key_path}
+      - ${private_key_password}
+      - ${private_key}
+      - ${region}
+      - ${compartment_ocid}
     visible: false
   - title: "Configuration"
     variables:
-      - redbull_compartment
-      - free_tier_compute
-      - ssh_public_key
+      - ${redbull_compartment}
+      - ${free_tier_compute}
+      - ${ssh_public_key}
 
 variables:
   free_tier_compute:
@@ -39,6 +39,6 @@ variables:
     default: "redbullhol"
   ssh_public_key:
     title: "Compute SSH Public Key"
-    description: "The public to install on the compute for SSH access."
+    description: "The public key to install on the compute for SSH access."
     type: oci:core:ssh:publickey
     required: true
