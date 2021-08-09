@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+  <head>
+  <br><br>
+    <style>
+      body {
+        background-image: url('/images/Hero_image.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+        
+        table.dataframe, .dataframe th, .dataframe td {
+          border: none;
+          border-bottom: 1px solid #C8C8C8;
+          border-collapse: collapse;
+          text-align:left;
+          padding: 10px;
+          margin-bottom: 40px;
+          font-size: 0.9em;
+        }
+
+        .driver th {
+            background-color: #add8e6;
+            color: white;
+        }
+
+        .female th {
+            background-color: #77dd77;
+            color: white;
+        }
+
+        tr:nth-child(odd)		{ background-color:#eee; }
+        tr:nth-child(even)	{ background-color:#fff; }
+
+        tr:hover            { background-color: #ffff99;}        
+    </style>
+   <title><F1 Predictor</title>
+    </div>
+    <meta charset = "UTF-8" />
+  </head>
+  <body style="Width:100%">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      
+    <div style="font-size:0">
+      <div style="width:50%; display:inline-table;font-size:15px">
+          <!-- Section Izq -->
+
+    <div class='container'>
+    <h1 style="text-align:center;font-size:55px;color:white">Formula 1 Predictor</h1> 
+    </div>
+    <br><br><br><br><br><<br><br>
+    <div class='container'>
+ 
+      <form action="{{url_for('predict_position')}}"method="POST">
+        <p>
+            <!-- <label>Circuits</label> -->
+            <div class="col-xs-3">
+            <select class="form-control" name='circuit' id='Circuits' required="required" autofocus>
+              <option value="" disabled selected>Select Circuit</option>
+                <option value="Bahrain International Circuit">Bahrain International Circuit</option>
+                <option value="Autodromo Enzo e Dino Ferrari">Autodromo Enzo e Dino Ferrari</option>
+                <option value="Autódromo Internacional do Algarve">Autódromo Internacional do Algarve</option>
+                <option value="Circuit de Barcelona-Catalunya">Circuit de Barcelona-Catalunya</option>
+                <option value="Circuit de Monaco">Circuit de Monaco</option>
+                <option value="Baku City Circuit">Baku City Circuit</option>
+                <option value="Circuit Paul Ricard">Circuit Paul Ricard</option>
+                <option value="Red Bull Ring">Red Bull Ring</option>
+                <option value="Silverstone Circuit">Silverstone Circuit</option>
+                <option value="Hungaroring">Hungaroring</option>
+                <option value="Circuit de Spa-Francorchamps">Circuit de Spa-Francorchamps</option>
+                <option value="Circuit Park Zandvoort">Circuit Park Zandvoort</option>
+                <option value="Autodromo Nazionale di Monza">Autodromo Nazionale di Monza</option>
+                <option value="Sochi Autodrom">Sochi Autodrom</option>
+                <option value="Marina Bay Street Circuit">Marina Bay Street Circuit</option>
+                <option value="Suzuka Circuit">Suzuka Circuit</option>
+                <option value="Circuit of the Americas">Circuit of the Americas</option>
+                <option value="Autódromo Hermanos Rodríguez">Autódromo Hermanos Rodríguez</option>
+                <option value="Autódromo Internacional Nelson Piquet">Autódromo Internacional Nelson Piquet</option>
+                <option value="Jeddah Street Circuit">Jeddah Street Circuit</option>
+                <option value="Yas Marina Circuit">Yas Marina Circuit</option>
+            </select>
+            </div>
+            <br>
+            <!-- <label>Weather</label> -->
+            <div class="col-xs-3">
+            <select class="form-control" name='weather' id='weather' required="required" autofocus>
+              <option value="" disabled selected>Select Weather for Race</option>
+                <option value="warm">Warm</option>
+                <option value="cold">Cold</option>
+                <option value="dry">Dry</option>
+                <option value="wet">Wet</option>
+                <option value="cloudy">Cloudy</option>
+            </select>
+            </div>
+            <br>
+          
+            <button type="submit" class="btn btn-primary btn-block">predict</button>
+            </p> 
+              
+    </form>
+    </div>
+
+          <!-- End Section Izq -->
+      </div>
+      <div style="width:50%; display:inline-table;font-size:15px"></div>
+    </div>
+      
+    
+    
+    <div style="font-size:0">
+      <div style="width:50%; display:inline-table;font-size:15px">
+          <!-- Section Izq -->
+    
+    <div class="d-flex justify-content-center">
+
+ {% for table in tables %}
+    {{ table|safe }}
+  {% endfor %}
+        
+    </div>
+          
+          <!-- End Section Izq -->
+      </div>
+      <div style="width:50%; display:inline-table;font-size:15px"></div>
+    </div>
+          
+  </body
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
