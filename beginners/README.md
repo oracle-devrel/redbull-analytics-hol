@@ -6,6 +6,8 @@ You'll need an OCI free trial account: <a href="https://signup.cloud.oracle.com/
 
 Registered lab participants should have received $500 in credits to use for Data Science operations.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4U-0SumNz6w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ### SSH Key
 
 You'll also need an SSH key pair to access the OCI Stack we're going to create. For Mac/Linux systems, you can [use `ssh-keygen`](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title4). On Windows, you'll [use PuTTY Key Generator](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title5). Again, right click the appropriate link and open in a new tab so you don't lose this page.
