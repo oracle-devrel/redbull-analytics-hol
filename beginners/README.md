@@ -2,13 +2,13 @@
 
 ## Prerequisites
 
-You'll need an OCI free trial account ([click here to sign up](https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US)). We're going to use a ready-to-go image to install the required resources, so all you need to start is a free account.
+You'll need an OCI free trial account (<a href="https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US" target="_blank" title="Sign up for free trial">click here to sign up</a>). We're going to use a ready-to-go image to install the required resources, so all you need to start is a free account.
 
 Registered lab participants should have received $500 in credits to use for Data Science operations.
 
 ### SSH Key
 
-You'll also need an SSH key pair to access the OCI Stack we're going to create. For Mac/Linux systems, you can [use `ssh-keygen`](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title4). On Windows, you'll [use PuTTY Key Generator](ariaid-title5). 
+You'll also need an SSH key pair to access the OCI Stack we're going to create. For Mac/Linux systems, you can [use `ssh-keygen`](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title4). On Windows, you'll [use PuTTY Key Generator](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title5). 
 
 To summarize Mac/Linux:
 
@@ -19,8 +19,8 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
 ## Getting Started
 
 1. Click the button below to begin the deploy of the Data Science stack and custom image:
-
-    [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/operard/formule1-analytics-hol/releases/latest/download/redbullcompute.zip)
+    
+    <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/redbull-analytics-hol/releases/latest/download/redbull-analytics-hol-latest.zip" target="_blank"><img src="https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg" alt="Deploy to Oracle Cloud"/></a>
 2. If needed, log into your account. You should then be presented with the **Create Stack** page. Under *Stack Information* (the first screen), check the box *I have reviewed and accept the Oracle Terms of Use*. Once that box is checked, the information for the stack will be populated automatically.
     
     ![Create Stack](./docs/red-bull-hol-1a-create-stack-information.jpg)
