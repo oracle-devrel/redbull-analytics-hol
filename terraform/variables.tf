@@ -2,6 +2,7 @@
 
 variable "ssh_public_key" { 
   description = "The public SSH key to use for the compute instance"
+  default     = ""
 }
 
 variable "redbull_compartment" {
@@ -11,7 +12,7 @@ variable "redbull_compartment" {
 
 variable "free_tier_compute" {
   description = "If this should use an always-free tier compute shape."
-  default = false
+  default     = false
 }
 
 #*************************************
