@@ -42,7 +42,7 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
 6. Once the Create Stack job has succeeded, click the hamburger menu in the upper left, select **Compute** in the sidebar, and click **Instances** in the menu.
 
     ![Instances in the Menu](./docs/red-bull-hol-2a-menu-instances.jpg)
-7. On the **Instances** screen, make sure "redbullhol" is selected under *Compartment*. If "redbullhol" isn't in the dropdown menu, it may need some time to show up, so grab (another) cup of coffee/tea and check back in a few minutes.
+7. On the **Instances** screen, make sure "redbullhol" is selected under *Compartment*. If "redbullhol" isn't in the dropdown menu, you may need to refresh the page for the new compartent to show up.
 
     ![Instances Compartment](./docs/red-bull-hol-2c-instances-compartment.jpg)
 8. Once the "redbullhol" compartment is selected, you should see a running Instance in the list. The address you'll need to access it is in the *Public IP* column. Copy the IP address shown.
