@@ -10,11 +10,6 @@ variable "redbull_compartment" {
   default     = "redbullhol"
 }
 
-variable "free_tier_compute" {
-  description = "If this should use an always-free tier compute shape."
-  default     = false
-}
-
 #*************************************
 #           TF Requirements
 #*************************************

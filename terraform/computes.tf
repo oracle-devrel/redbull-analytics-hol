@@ -2,10 +2,6 @@
 
 ### custom image
 
-locals {
-  compute_shape = var.free_tier_compute ? "VM.Standard.E2.1.Micro" : "VM.Standard2.2"
-}
-
 resource "oci_core_image" "redbullhol_image" {
   compartment_id = oci_identity_compartment.redbullhol.id
   depends_on = [time_sleep.wait_60_seconds]
@@ -22,7 +18,7 @@ resource "oci_core_image" "redbullhol_image" {
 resource oci_core_instance redbull_lab1 {
   availability_domain = data.oci_identity_availability_domain.AD1.name
   compartment_id      = oci_identity_compartment.redbullhol.id
-  shape = local.compute_shape
+  shape               = "VM.Standard2.2"
   
   agent_config {
     is_management_disabled = "false"

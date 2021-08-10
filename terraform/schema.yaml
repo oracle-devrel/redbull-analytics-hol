@@ -21,16 +21,9 @@ variableGroups:
   - title: "Configuration"
     variables:
       - ${redbull_compartment}
-      - ${free_tier_compute}
       - ${ssh_public_key}
 
 variables:
-  free_tier_compute:
-    type: boolean
-    title: "Use Always-Free Shape?"
-    description: "Should an always free-tier compute shape be used?  If not selected, a shape that's eligible in a trial period or a paid account is used."
-    required: true
-    default: false
   redbull_compartment:
     type: string
     title: "Compartment Name"
