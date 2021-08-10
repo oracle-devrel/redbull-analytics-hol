@@ -6,7 +6,7 @@ You'll need an OCI free trial account: <a href="https://signup.cloud.oracle.com/
 
 Registered lab participants should have received $500 in credits to use for Data Science operations.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4U-0SumNz6w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Here's [a video to help with signing up.](https://www.youtube.com/watch?v=4U-0SumNz6w)
 
 ## Lab Guide
 
@@ -84,6 +84,10 @@ View each notebook in numeric order:
 - 03.f1_analysis_EDA.ipynb
 - 04.ML_Modelling.ipynb
 - 05.ML_Model_Serving.ipynb
+
+## Making Your Own Modifications
+
+Once you've tested the notebooks as they are, you can make changes to `04.ML_Modelling.ipynb` to experiment with different inputs and see the results.
 
 ## Starting The Web Application
 
