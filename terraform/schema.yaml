@@ -34,4 +34,4 @@ variables:
     title: "Compute SSH Public Key"
     description: "The public key to install on the compute for SSH access."
     type: oci:core:ssh:publickey
-    required: true
+    required: false
