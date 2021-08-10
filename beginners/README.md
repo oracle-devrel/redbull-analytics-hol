@@ -2,13 +2,19 @@
 
 ## Prerequisites
 
-You'll need an OCI free trial account (<a href="https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US" target="_blank" title="Sign up for free trial">click here to sign up</a>). We're going to use a ready-to-go image to install the required resources, so all you need to start is a free account.
+You'll need an OCI free trial account: <a href="https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US" target="_blank" title="Sign up for free trial">click here to sign up</a> (right click and open in a new tab so you can keep these instructions open). We're going to use a ready-to-go image to install the required resources, so all you need to start is a free account.
 
 Registered lab participants should have received $500 in credits to use for Data Science operations.
 
+Here's [a video to help with signing up.](https://www.youtube.com/watch?v=4U-0SumNz6w)
+
+## Lab Guide
+
+A PDF version of the slide deck for this lab is [available here](./docs/Red-Bull-HOL.pdf) (right click to save to disk or open in a new tab).
+
 ### SSH Key
 
-You'll also need an SSH key pair to access the OCI Stack we're going to create. For Mac/Linux systems, you can [use `ssh-keygen`](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title4). On Windows, you'll [use PuTTY Key Generator](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title5). 
+You'll also need an SSH key pair to access the OCI Stack we're going to create. For Mac/Linux systems, you can [use `ssh-keygen`](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title4). On Windows, you'll [use PuTTY Key Generator](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title5). Again, right click the appropriate link and open in a new tab so you don't lose this page.
 
 To summarize Mac/Linux:
 
@@ -40,7 +46,7 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
 6. Once the Create Stack job has succeeded, click the hamburger menu in the upper left, select **Compute** in the sidebar, and click **Instances** in the menu.
 
     ![Instances in the Menu](./docs/red-bull-hol-2a-menu-instances.jpg)
-7. On the **Instances** screen, make sure "redbullhol" is selected under *Compartment*. If "redbullhol" isn't in the dropdown menu, it may need some time to show up, so grab (another) cup of coffee/tea and check back in a few minutes.
+7. On the **Instances** screen, make sure "redbullhol" is selected under *Compartment*. If "redbullhol" isn't in the dropdown menu, you may need to refresh the page for the new compartent to show up.
 
     ![Instances Compartment](./docs/red-bull-hol-2c-instances-compartment.jpg)
 8. Once the "redbullhol" compartment is selected, you should see a running Instance in the list. The address you'll need to access it is in the *Public IP* column. Copy the IP address shown.
@@ -79,6 +85,10 @@ View each notebook in numeric order:
 - 04.ML_Modelling.ipynb
 - 05.ML_Model_Serving.ipynb
 
+## Making Your Own Modifications
+
+Once you've tested the notebooks as they are, you can make changes to `04.ML_Modelling.ipynb` to experiment with different inputs and see the results.
+
 ## Starting The Web Application
 
 To see the results of the lab, you'll need to start the web server using Terminal.
@@ -87,8 +97,11 @@ To see the results of the lab, you'll need to start the web server using Termina
 2. Enter the following commands, hitting return after each one (feel free to copy and paste)
 
         cd /home/opc/redbull-analytics-hol/beginners/web
-        source /home/opc/redbullenv/bin/activate
-        python3 app.py
+        ./launchapp.sh start
+
+    To stop the server later, if needed, use:
+
+        ./launchapp.sh stop
 3. Open a web browser to the public IP of your Jupyter Lab, but use port 8080 instead of port 8001:
 
         http://xxx.xxx.xxx.xxx:8080
