@@ -10,7 +10,7 @@ Here's [a video to help with signing up.](https://www.youtube.com/watch?v=4U-0Su
 
 ## Lab Guide
 
-A PDF version of the slide deck for this lab is [available here](./docs/Red-Bull-HOL.pdf) (right click to save to disk or open in a new tab).
+A PDF version of the slide deck for this lab is [available here](https://raw.githubusercontent.com/oracle-devrel/redbull-analytics-hol/main/beginners/docs/Red-Bull-HOL.pdf) (right click to save to disk or open in a new tab).
 
 ### SSH Key
 
