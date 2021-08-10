@@ -34,7 +34,7 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
     Under *Stack Information* (the first screen), check the box *I have reviewed and accept the Oracle Terms of Use*. Once that box is checked, the information for the stack will be populated automatically.
     
     ![Create Stack](./docs/red-bull-hol-1a-create-stack-information.jpg)
-3. Click **Next** at the bottom of the screen. This will take you to the **Configure Variables** page. On this page you'll need to provide the SSH key we created in the prerequisites. If you want your Compute instance to function after your Free Trial ends, check the box for an Always Free Shape. Then click **Next** again.
+3. Click **Next** at the bottom of the screen. This will take you to the **Configure Variables** page. On this page you'll need to provide the SSH key we created in the prerequisites if you want SSH access to your Compute instance.
 
     ![Configure Variables](./docs/red-bull-hol-configure-variables.jpg)
 4. On the **Review** page, be sure *Run Apply* is checked, and click **Create**.
@@ -60,42 +60,15 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
 10. Log in with the password `Redbull1`.
 11. You should now see the Jupyter Lab. Navigate in the sidebar to `/redbull-analytics-hol/beginners/` to see the Jupyter notebooks for this lab.
 
-The notebooks are numbered and you'll progress through them in order. These will walk you through collecting and analyzing the data we'll use to predict some races.
+## Up and Running
 
-
-## Using the Jupyter Lab
-
-The Jupyter notebooks are ordered by number, and you'll progress through them in sequence. 
-
-To use a Jupyter notebook, double click it to open it in an editor tab, and then you can read through it and execute steps. In most cases you don't need to execute the notebooks to see the results, but if you want to try something out, use the "play" button at the top of the editor to execute the currently-highlighted step.
-
-All of the data and models for this lab are already stored in this directory. You can run the notebooks to see what they do, but it's not required to see the finished product. Note that running the notebook `04.ML_Modelling` takes about 40 minutes in total.
-
-These notebooks use data gathered from ergast.com. The data gathering process takes some time, so we've gone ahead and pulled the data in for you. However, if you want to see how it's done, take a look in the `from_scratch` directory, where you'll find the original scripts that gathered the remote data.
-
-See the notes in each notebook for a bit of explanation as you go. If you have a basic understanding of Python, you should also be able to see the nitty gritty of what's happening.
-
-## Developer Journey Map
-
-View each notebook in numeric order:
-
-- 01_0.Formule1_Data_Collection.ipynb
-- 01_1.Weather_Data_Collection.ipynb
-- 01_2.Qualifying_Data_Collection.ipynb
-- 02.Data_Preparation_merging.ipynb
-- 03.f1_analysis_EDA.ipynb
-- 04.ML_Modelling.ipynb
-- 05.ML_Model_Serving.ipynb
-
-## Making Your Own Modifications
-
-Once you've tested the notebooks as they are, you can make changes to `04.ML_Modelling.ipynb` to experiment with different inputs and see the results.
+From this point on, please refer to the slide deck being presented on Zoom. You can use [the PDF](https://raw.githubusercontent.com/oracle-devrel/redbull-analytics-hol/main/beginners/docs/Red-Bull-HOL.pdf) for reference as you go.
 
 ## Starting The Web Application
 
-To see the results of the lab, you'll need to start the web server using Terminal.
+When you get through the notebooks, you'll need to start the web server to see your results. We're including these commands here in the README for clarity (and so you can copy/paste).
 
-1. In the menu at the top of the page, select **File->New->Terminal**.
+1. In the Jupyter Lab menu at the top of the page, select **File->New->Terminal**.
 2. Enter the following commands, hitting return after each one (feel free to copy and paste)
 
         cd /home/opc/redbull-analytics-hol/beginners/web
