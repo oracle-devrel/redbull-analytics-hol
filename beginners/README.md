@@ -67,7 +67,9 @@ The notebooks are numbered and you'll progress through them in order. These will
 
 The Jupyter notebooks are ordered by number, and you'll progress through them in sequence. 
 
-All of the data and models for this lab are already stored in this directory. You can run the notebooks to see what they do, but it's not required to see the finished product. Note that running the notebook `04.ML_Modelling` takes about 40 minutes, so if you want to play with it, save it until after the live lab.
+To use a Jupyter notebook, double click it to open it in an editor tab, and then you can read through it and execute steps. In most cases you don't need to execute the notebooks to see the results, but if you want to try something out, use the "play" button at the top of the editor to execute the currently-highlighted step.
+
+All of the data and models for this lab are already stored in this directory. You can run the notebooks to see what they do, but it's not required to see the finished product. Note that running the notebook `04.ML_Modelling` takes about 40 minutes in total.
 
 These notebooks use data gathered from ergast.com. The data gathering process takes some time, so we've gone ahead and pulled the data in for you. However, if you want to see how it's done, take a look in the `from_scratch` directory, where you'll find the original scripts that gathered the remote data.
 
