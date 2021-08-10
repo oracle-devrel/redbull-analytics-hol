@@ -8,6 +8,10 @@ Registered lab participants should have received $500 in credits to use for Data
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4U-0SumNz6w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+## Lab Guide
+
+A PDF version of the slide deck for this lab is [available here](./docs/Red-Bull-HOL.pdf) (right click to save to disk or open in a new tab).
+
 ### SSH Key
 
 You'll also need an SSH key pair to access the OCI Stack we're going to create. For Mac/Linux systems, you can [use `ssh-keygen`](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title4). On Windows, you'll [use PuTTY Key Generator](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#ariaid-title5). Again, right click the appropriate link and open in a new tab so you don't lose this page.
