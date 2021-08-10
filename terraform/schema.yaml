@@ -21,7 +21,6 @@ variableGroups:
   - title: "Configuration"
     variables:
       - ${redbull_compartment}
-      - ${ssh_public_key}
 
 variables:
   redbull_compartment:
@@ -30,8 +29,3 @@ variables:
     description: "The name of the compartment that will be created."
     required: true
     default: "redbullhol"
-  ssh_public_key:
-    title: "Compute SSH Public Key"
-    description: "The public key to install on the compute for SSH access."
-    type: oci:core:ssh:publickey
-    required: true
