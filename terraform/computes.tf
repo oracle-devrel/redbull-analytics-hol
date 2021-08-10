@@ -10,7 +10,7 @@ resource "oci_core_image" "redbullhol_image" {
   
   image_source_details {
     source_type = "objectStorageUri"
-    source_uri = "https://objectstorage.eu-frankfurt-1.oraclecloud.com/p/z5YCJTj_N5yMUIfygE6Xx39R5jkoothfDchyfONffyy2v-jVqXlUYI88VG5v8Akn/n/emeasespainsandbox/b/publichol/o/redbullhol-20210805-1051"
+    source_uri = "https://objectstorage.eu-frankfurt-1.oraclecloud.com/p/i0H4G1oKfKV7nOqjyeJ_SsXKhIZFgfmXFcFVEcr_9XEAVpkTOHc2MWtoz2WNmMXr/n/emeasespainsandbox/b/publichol/o/redbullhol-20210809-1523"
   }
 }
 
