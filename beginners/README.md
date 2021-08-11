@@ -71,7 +71,6 @@ When you get through the notebooks, you'll need to start the web server to see y
 1. In the Jupyter Lab menu at the top of the page, select **File->New->Terminal**.
 2. Enter the following commands, hitting return after each one (feel free to copy and paste)
 
-        cd /home/opc/redbull-analytics-hol/beginners/web
         ./launchapp.sh start
 
     To stop the server later, if needed, use:
