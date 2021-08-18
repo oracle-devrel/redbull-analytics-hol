@@ -29,7 +29,7 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
     <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/redbull-analytics-hol/releases/latest/download/redbull-analytics-hol-latest.zip" target="_blank"><img src="https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg" alt="Deploy to Oracle Cloud"/></a>
 2. If needed, log into your account. You should then be presented with the **Create Stack** page. 
     
-    These next few steps will deploy a stack to your OCI tenancy. This will include a Compute instance and the necessary tools to deploy and run Jupyter Lab from within your OCI account.
+    These next few steps will deploy a stack to your OCI tenancy. This will include a Compute instance and the necessary tools to deploy and run JupyterLab from within your OCI account.
 
     Under *Stack Information* (the first screen), check the box *I have reviewed and accept the Oracle Terms of Use*. Once that box is checked, the information for the stack will be populated automatically.
     
@@ -46,19 +46,19 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
 6. Once the Create Stack job has succeeded, click the hamburger menu in the upper left, select **Compute** in the sidebar, and click **Instances** in the menu.
 
     ![Instances in the Menu](./docs/red-bull-hol-2a-menu-instances.jpg)
-7. On the **Instances** screen, make sure "redbullhol" is selected under *Compartment*. If "redbullhol" isn't in the dropdown menu, you may need to refresh the page for the new compartent to show up.
+7. On the **Instances** screen, make sure "redbullhol" is selected under *Compartment*. If "redbullhol" isn't in the dropdown menu, you may need to refresh the page for the new compartment to show up.
 
     ![Instances Compartment](./docs/red-bull-hol-2c-instances-compartment.jpg)
 8. Once the "redbullhol" compartment is selected, you should see a running Instance in the list. The address you'll need to access it is in the *Public IP* column. Copy the IP address shown.
 
     ![Public IP](./docs/red-bull-hol-2d-instances-public-ip.jpg)
-9. Next, open a new tab in your browser to load up the web UI for Jupyter Lab. Paste the IP address you just copied with `:8001` added to the end. The URL should look like `http://xxx.xxx.xxx.xxx:8001` (substituting the public IP we copied in the previous step). Jupyter Lab is running on port 8001, so when you navigate to this URL you should see the Juypter login.
+9. Next, open a new tab in your browser to load up the web UI for JupyterLab. Paste the IP address you just copied with `:8001` added to the end. The URL should look like `http://xxx.xxx.xxx.xxx:8001` (substituting the public IP we copied in the previous step). JupyterLab is running on port 8001, so when you navigate to this URL you should see the Juypter login.
 
-    _**Note:** You should not be on VPN when opening Jupyter Lab._
+    _**Note:** You should not be on VPN when opening JupyterLab._
 
     ![Jupyter Login](./docs/red-bull-hol-3b-jupyter-login.jpg)
 10. Log in with the password `Redbull1`.
-11. You should now see the Jupyter Lab. Navigate in the sidebar to `/redbull-analytics-hol/beginners/` to see the Jupyter notebooks for this lab.
+11. You should now see the JupyterLab. Navigate in the sidebar to `/redbull-analytics-hol/beginners/` to see the Jupyter notebooks for this lab.
 
 ## Up and Running
 
@@ -68,7 +68,7 @@ From this point on, please refer to the slide deck being presented on Zoom. You 
 
 When you get through the notebooks, you'll need to start the web server to see your results. We're including these commands here in the README for clarity (and so you can copy/paste).
 
-1. In the Jupyter Lab menu at the top of the page, select **File->New->Terminal**.
+1. In the JupyterLab menu at the top of the page, select **File->New->Terminal**.
 2. Enter the following commands, hitting return after each one (feel free to copy and paste)
 
         ./launchapp.sh start
@@ -76,8 +76,8 @@ When you get through the notebooks, you'll need to start the web server to see y
     To stop the server later, if needed, use:
 
         ./launchapp.sh stop
-3. Open a web browser to the public IP of your Jupyter Lab, but use port 8080 instead of port 8001:
+3. Open a web browser to the public IP of your JupyterLab, but use port 8080 instead of port 8001:
 
         http://xxx.xxx.xxx.xxx:8080
 
-    The Public IP is the one at which you're currently accessing Jupyter Lab, which we copied from the Running Instances step above.
+    The Public IP is the one at which you're currently accessing JupyterLab, which we copied from the Running Instances step above.
