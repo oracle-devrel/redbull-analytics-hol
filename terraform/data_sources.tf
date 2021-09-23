@@ -35,3 +35,11 @@ data oci_identity_availability_domain AD1 {
   compartment_id = var.compartment_ocid
   ad_number      = "1"
 }
+
+data "oci_core_images" "this" {
+  compartment_id = var.compartment_ocid
+  filter {
+    name = "state"
+    values = ["AVAILABLE"]
+  }
+}

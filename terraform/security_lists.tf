@@ -34,8 +34,8 @@ resource oci_core_default_security_list Default-Security-List-for-redbullvcn {
     stateless   = "false"
 
     tcp_options {
-      max = "8001"
-      min = "8001"
+      max = "8888"
+      min = "8888"
     }
   }
 
@@ -48,8 +48,8 @@ resource oci_core_default_security_list Default-Security-List-for-redbullvcn {
     stateless   = "false"
 
     tcp_options {
-      max = "8080"
-      min = "8080"
+      max = "8443"
+      min = "8443"
     }
   }
 

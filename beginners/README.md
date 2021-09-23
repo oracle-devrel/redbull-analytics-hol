@@ -52,7 +52,7 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
 8. Once the "redbullhol" compartment is selected, you should see a running Instance in the list. The address you'll need to access it is in the *Public IP* column. Copy the IP address shown.
 
     ![Public IP](./docs/red-bull-hol-2d-instances-public-ip.jpg)
-9. Next, open a new tab in your browser to load up the web UI for Jupyter Lab. Paste the IP address you just copied with `:8001` added to the end. The URL should look like `http://xxx.xxx.xxx.xxx:8001` (substituting the public IP we copied in the previous step). Jupyter Lab is running on port 8001, so when you navigate to this URL you should see the Juypter login.
+9. Next, open a new tab in your browser to load up the web UI for Jupyter Lab. Paste the IP address you just copied with `:8888` added to the end. The URL should look like `https://xxx.xxx.xxx.xxx:8888` (substituting the public IP we copied in the previous step). Jupyter Lab is running on port 8888, so when you navigate to this URL you should see the Juypter login.
 
     _**Note:** You should not be on VPN when opening Jupyter Lab._
 
@@ -102,8 +102,8 @@ To see the results of the lab, you'll need to start the web server using Termina
     To stop the server later, if needed, use:
 
         ./launchapp.sh stop
-3. Open a web browser to the public IP of your Jupyter Lab, but use port 8080 instead of port 8001:
+3. Open a web browser to the public IP of your Jupyter Lab, but use port 8443 instead of port 8888:
 
-        http://xxx.xxx.xxx.xxx:8080
+        https://xxx.xxx.xxx.xxx:8443
 
     The Public IP is the one at which you're currently accessing Jupyter Lab, which we copied from the Running Instances step above.
