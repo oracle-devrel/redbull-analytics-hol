@@ -9,5 +9,5 @@ output "jupyter_url" {
 }
 
 output "get_jupyter_token" {
-  value = "ssh ${oci_core_instance.redbull_lab1.public_ip} 'source redbullenv/bin/activate; jupyter server list'"
+  value = "ssh -i PATH_TO_YOUR_SSH_PRIV_KEY_HERE opc@${oci_core_instance.redbull_lab1.public_ip} 'source redbullenv/bin/activate; jupyter server list'"
 }
