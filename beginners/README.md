@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-You'll need an OCI free trial account: <a href="https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US" target="_blank" title="Sign up for free trial">click here to sign up</a> (right click and open in a new tab so you can keep these instructions open). We're going to use a ready-to-go image to install the required resources, so all you need to start is a free account.
+You'll need an OCI free trial account: <a href="https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US" target="_blank" title="Sign up for free trial">click here to sign up</a> (right click and open in a new tab so you can keep these instructions open).
 
 Registered lab participants should have received $500 in credits to use for Data Science operations.
 
@@ -29,36 +29,43 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
     <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/redbull-analytics-hol/releases/latest/download/redbull-analytics-hol-latest.zip" target="_blank"><img src="https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg" alt="Deploy to Oracle Cloud"/></a>
 2. If needed, log into your account. You should then be presented with the **Create Stack** page. 
     
-    These next few steps will deploy a stack to your OCI tenancy. This will include a Compute instance and the necessary tools to deploy and run JupyterLab from within your OCI account.
+    These next few steps will deploy a stack to your OCI tenancy. This will include the necessary tools to deploy and run JupyterLab from within your OCI account.
 
     Under *Stack Information* (the first screen), check the box *I have reviewed and accept the Oracle Terms of Use*. Once that box is checked, the information for the stack will be populated automatically.
     
     ![Create Stack](./docs/red-bull-hol-1a-create-stack-information.jpg)
-3. Click **Next** at the bottom of the screen. This will take you to the **Configure Variables** page. On this page you'll need to provide the SSH key we created in the prerequisites if you want SSH access to your Compute instance.
+3. Click **Next** at the bottom of the screen. This will take you to the **Configure Variables** page. On this page you'll need to provide the SSH key we created in the prerequisites. You can copy and paste the contents of the public key (`.pub`), or use the file selector to upload the `.pub` file directly.
 
     ![Configure Variables](./docs/red-bull-hol-configure-variables.jpg)
 4. On the **Review** page, be sure *Run Apply* is checked, and click **Create**.
 
     ![Review and Create](./docs/red-bull-hol-1c-create-stack-review.jpg)
-5. This will take you to the **Job Details** page, and OCI will begin creating the stack and deploying the custom image for the lab. This will take about 11 minutes. When it completes (assuming everything went smoothly), the **Job Details** will show a bright green square with "Succeeded" below it.
+5. This will take you to the **Job Details** page, and OCI will begin creating the stack and deploying the scripts for the lab. This will take 8-10 minutes. When it completes (assuming everything went smoothly), the **Job Details** will show a bright green square with "Succeeded" below it.
     
     ![Create Stack Succeeded](./docs/red-bull-hol-1d-create-stack-succeeded.jpg)
-6. Once the Create Stack job has succeeded, click the hamburger menu in the upper left, select **Compute** in the sidebar, and click **Instances** in the menu.
+6. Once the Create Stack job has succeeded, click "Outputs."
 
-    ![Instances in the Menu](./docs/red-bull-hol-2a-menu-instances.jpg)
-7. On the **Instances** screen, make sure "redbullhol" is selected under *Compartment*. If "redbullhol" isn't in the dropdown menu, you may need to refresh the page for the new compartment to show up.
+    ![Show Outputs](./docs/red-bull-hol-show-outputs.jpg)
 
-    ![Instances Compartment](./docs/red-bull-hol-2c-instances-compartment.jpg)
-8. Once the "redbullhol" compartment is selected, you should see a running Instance in the list. The address you'll need to access it is in the *Public IP* column. Copy the IP address shown.
+    The outputs will include a terminal command you'll need to run. Replace the private key reference with the path to the private key that matches the public key you uploaded. The final command should look similar to:
 
-    ![Public IP](./docs/red-bull-hol-2d-instances-public-ip.jpg)
-9. Next, open a new tab in your browser to load up the web UI for JupyterLab. Paste the IP address you just copied with `:8001` added to the end. The URL should look like `http://xxx.xxx.xxx.xxx:8001` (substituting the public IP we copied in the previous step). JupyterLab is running on port 8001, so when you navigate to this URL you should see the Juypter login.
+    ```console
+    $ ssh -i ~/.ssh/id_rsa2 opc@123.456.789.100 'source redbullenv/bin/activate; jupyter server list'
+    ```
+
+7. Open a terminal and run the above command. The output of the command will include a url containing a token. You'll need the token portion of the url (the part after `?token=`) for the next step.
+
+    ![SSH Output](./docs/red-bull-hol-terminal-ssh-output.jpg)
+8. Back in the **Outputs** display in your browser, copy the IP address for your Jupyter Lab (ending with `:8888`). Paste that into a new browser window/tab and append `?token=YOUR_TOKEN`, replacing `YOUR_TOKEN` with the token from step 7. Load the resulting URL.
+
+    ![Jupyter Lab URL](./docs/red-bull-hol-jupyter-url.jpg)
+9. Your new deployment uses a self-signed certificate, so you'll get a warning from your browser that the connection is insecure. You'll need to approve the loading of the page. In most browsers you'll see an "Advanced" or similar button, and clicking it will offer you the option to ignore security concerns and load the page anyway.
+
+    You'll need to repeat the security approval procedure when loading the Flask app created by the lab.
 
     _**Note:** You should not be on VPN when opening JupyterLab._
-
-    ![Jupyter Login](./docs/red-bull-hol-3b-jupyter-login.jpg)
-10. Log in with the password `Redbull1`.
-11. You should now see the JupyterLab. Navigate in the sidebar to `/redbull-analytics-hol/beginners/` to see the Jupyter notebooks for this lab.
+    
+10. You should now see the JupyterLab. Navigate in the sidebar to `/redbull-analytics-hol/beginners/` to see the Jupyter notebooks for this lab.
 
 ## Up and Running
 

@@ -1,10 +1,10 @@
 # Title shown in Application Information tab.
-title: "RedBull Honda Racing Analytics Hands-on Lab Environment"
+title: RedBull Honda Racing Analytics Hands-on Lab Environment
 # Sub Title shown in Application Information tab.
-description: "RedBull Honda Racing Analytics Hands-on Lab Environment"
+description: RedBull Honda Racing Analytics Hands-on Lab Environment
 schemaVersion: 1.1.0
-version: "1.0"
-locale: "en"
+version: 1.0
+locale: en
 variableGroups:
   - title: "Hidden"
     variables:
@@ -17,21 +17,27 @@ variableGroups:
       - ${private_key}
       - ${region}
       - ${compartment_ocid}
+      - ${ssh_public_key_path}
     visible: false
   - title: "Configuration"
     variables:
       - ${redbull_compartment}
       - ${ssh_public_key}
+      - ${compute_image_name}
 
 variables:
   redbull_compartment:
     type: string
-    title: "Compartment Name"
-    description: "The name of the compartment that will be created."
+    title: Compartment Name
+    description: The name of the compartment that will be created.
     required: true
-    default: "redbullhol"
   ssh_public_key:
-    title: "Compute SSH Public Key"
-    description: "The public key to install on the compute for SSH access."
+    title: Compute SSH Public Key
+    description: The public key to install on the compute for SSH access.
     type: oci:core:ssh:publickey
+    required: false
+  compute_image_name:
+    title: Compute Image
+    type: string
+    description: The image name to use for the compute instance.
     required: false

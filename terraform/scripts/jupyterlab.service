@@ -1,0 +1,12 @@
+[Unit]
+Description=Service to start jupyterlab for opc
+Documentation=
+[Service]
+User=opc
+Group=opc
+Type=forking
+WorkingDirectory=/home/opc
+ExecStart=/home/opc/launchjupyterlab.sh start
+ExecStop=/home/opc/launchjupyterlab.sh stop
+[Install]
+WantedBy=multi-user.target
