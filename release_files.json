@@ -11,6 +11,10 @@
         ]
       },
       {
+        "src_pattern": "terraform/scripts/*",
+        "dst_path": "."
+      },
+      {
         "src": "LICENSE"
       },
       {
@@ -22,9 +26,5 @@
         "dst": "provider.tf"
       }
     ]
-  },
-  {
-    "action": "upload_file",
-    "file_name": "redbull-analytics-hol-latest.zip"
   }
 ]
