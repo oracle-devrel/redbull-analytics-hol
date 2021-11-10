@@ -26,5 +26,9 @@
         "dst": "provider.tf"
       }
     ]
+  },
+  {
+    "action": "upload_file",
+    "file_name": "redbull-analytics-hol-latest.zip"
   }
 ]
