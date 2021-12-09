@@ -46,12 +46,12 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
 8. Once the "redbullhol" compartment is selected, you should see a running Instance in the list. The address you'll need to access it is in the *Public IP* column. Copy the IP address shown.
 
     ![Public IP](./docs/red-bull-hol-2d-instances-public-ip.jpg)
-9. Next, open a new tab in your browser to load up the web UI for Jupyter Lab. Paste the IP address you just copied with `:8001` added to the end. The URL should look like `http://xxx.xxx.xxx.xxx:8001` (substituting the public IP we copied in the previous step). Jupyter Lab is running on port 8001, so when you navigate to this URL you should see the Juypter login.
+9. Next, open a new tab in your browser to load up the web UI for Jupyter Lab. Paste the IP address you just copied with `:8888` added to the end. The URL should look like `https://xxx.xxx.xxx.xxx:8888` (substituting the public IP we copied in the previous step). Jupyter Lab is running on port 8888, so when you navigate to this URL you should see the Juypter login.
 
     _**Note:** You should not be on VPN when opening Jupyter Lab._
 
     ![Jupyter Login](./docs/red-bull-hol-3b-jupyter-login.jpg)
-10. Log in with the password `Redbull1`.
+10. Log in with the jupyter token and assign a password like `Redbull1`.
 11. You should now see the Jupyter Lab. Navigate in the sidebar to `/redbull-analytics-hol/beginners/` to see the Jupyter notebooks for this lab.
 
 The notebooks are numbered and you'll progress through them in order. These will walk you through collecting and analyzing the data we'll use to predict some races.
@@ -89,8 +89,8 @@ To see the results of the lab, you'll need to start the web server using Termina
         cd /home/opc/redbull-analytics-hol/beginners/web
         source /home/opc/redbullenv/bin/activate
         python3 app.py
-3. Open a web browser to the public IP of your Jupyter Lab, but use port 8080 instead of port 8001:
+3. Open a web browser to the public IP of your Jupyter Lab, but use port 8888 instead of port 8001:
 
-        http://xxx.xxx.xxx.xxx:8080
+        https://xxx.xxx.xxx.xxx:8888
 
     The Public IP is the one at which you're currently accessing Jupyter Lab, which we copied from the Running Instances step above.
