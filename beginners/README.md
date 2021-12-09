@@ -4,7 +4,7 @@
 
 You'll need an OCI free trial account (<a href="https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=en_US" target="_blank" title="Sign up for free trial">click here to sign up</a>). We're going to use a ready-to-go image to install the required resources, so all you need to start is a free account.
 
-Registered lab participants should have received $500 in credits to use for Data Science operations.
+Registered lab participants should have received $300 in credits to use for Data Science operations.
 
 ### SSH Key
 
