@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Oracle and/or its affiliates.
+# Copyright (c) 2020-2021 Oracle and/or its affiliates.
 
 terraform {
   required_version = ">= 0.13.5"

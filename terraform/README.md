@@ -196,3 +196,73 @@ When you no longer need the deployment, you can run this command to destroy the 
 ```
 terraform destroy
 ```
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.5 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_oci"></a> [oci](#provider\_oci) | 4.31.0 |
+| <a name="provider_oci.home"></a> [oci.home](#provider\_oci.home) | 4.31.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
+| <a name="provider_time"></a> [time](#provider\_time) | 0.7.2 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | 3.1.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [oci_core_default_dhcp_options.Default-DHCP-Options-for-redbullvcn](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_default_dhcp_options) | resource |
+| [oci_core_default_route_table.Default-Route-Table-for-redbullvcn](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_default_route_table) | resource |
+| [oci_core_default_security_list.Default-Security-List-for-redbullvcn](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_default_security_list) | resource |
+| [oci_core_instance.redbull_lab1](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance) | resource |
+| [oci_core_internet_gateway.redbullig](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_internet_gateway) | resource |
+| [oci_core_subnet.redbullsubnet](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_subnet) | resource |
+| [oci_core_vcn.redbullvcn](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_vcn) | resource |
+| [oci_identity_compartment.redbullhol](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/identity_compartment) | resource |
+| [oci_identity_tag.release](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/identity_tag) | resource |
+| [oci_identity_tag_namespace.devrel](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/identity_tag_namespace) | resource |
+| [random_id.tag](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
+| [time_sleep.wait_60_seconds](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep) | resource |
+| [tls_private_key.this](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
+| [oci_core_images.this](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/core_images) | data source |
+| [oci_identity_availability_domain.AD1](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_availability_domain) | data source |
+| [oci_identity_compartment.current_compartment](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_compartment) | data source |
+| [oci_identity_region_subscriptions.home_region_subscriptions](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_region_subscriptions) | data source |
+| [oci_identity_regions.current_region](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_regions) | data source |
+| [oci_identity_regions.home-region](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_regions) | data source |
+| [oci_identity_tenancy.tenant_details](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_tenancy) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_compartment_ocid"></a> [compartment\_ocid](#input\_compartment\_ocid) | The compartment OCID to deploy resources to | `string` | `""` | no |
+| <a name="input_compute_image_name"></a> [compute\_image\_name](#input\_compute\_image\_name) | The name of the compute image to use for the compute instances. | `string` | `"Oracle-Linux-7.9-2021.08.27-0"` | no |
+| <a name="input_fingerprint"></a> [fingerprint](#input\_fingerprint) | 'API Key' fingerprint, more details can be found at https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/credentials.htm#two | `string` | `""` | no |
+| <a name="input_private_key"></a> [private\_key](#input\_private\_key) | The private key (provided as a string value) | `string` | `""` | no |
+| <a name="input_private_key_password"></a> [private\_key\_password](#input\_private\_key\_password) | The password to use for the private key | `string` | `""` | no |
+| <a name="input_private_key_path"></a> [private\_key\_path](#input\_private\_key\_path) | Path to private key used to create OCI 'API Key', more details can be found at https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/credentials.htm#two | `string` | `""` | no |
+| <a name="input_redbull_compartment"></a> [redbull\_compartment](#input\_redbull\_compartment) | The name of the compartment created to hold all of the resources | `string` | `"redbullhol"` | no |
+| <a name="input_region"></a> [region](#input\_region) | OCI Region as documented at https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm | `string` | n/a | yes |
+| <a name="input_ssh_public_key"></a> [ssh\_public\_key](#input\_ssh\_public\_key) | The public SSH key to use for the compute instance | `string` | `""` | no |
+| <a name="input_ssh_public_key_path"></a> [ssh\_public\_key\_path](#input\_ssh\_public\_key\_path) | The path to the public SSH key to use for the compute instance | `string` | `""` | no |
+| <a name="input_tenancy_ocid"></a> [tenancy\_ocid](#input\_tenancy\_ocid) | OCI tenant OCID, more details can be found at https://docs.cloud.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five | `string` | n/a | yes |
+| <a name="input_user_ocid"></a> [user\_ocid](#input\_user\_ocid) | OCI user OCID, more details can be found at https://docs.cloud.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five | `string` | `""` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_get_jupyter_token"></a> [get\_jupyter\_token](#output\_get\_jupyter\_token) | n/a |
+| <a name="output_instance_pub_ip"></a> [instance\_pub\_ip](#output\_instance\_pub\_ip) | n/a |
+| <a name="output_jupyter_url"></a> [jupyter\_url](#output\_jupyter\_url) | n/a |

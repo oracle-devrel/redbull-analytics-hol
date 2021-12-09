@@ -1,28 +1,10 @@
 # Copyright (c) 2021 Oracle and/or its affiliates.
 
-### custom image
-
-locals {
-  compute_shape = var.free_tier_compute ? "VM.Standard.E2.1.Micro" : "VM.Standard2.2"
-}
-
-resource "oci_core_image" "redbullhol_image" {
-  compartment_id = oci_identity_compartment.redbullhol.id
-  depends_on = [time_sleep.wait_60_seconds]
-  
-  display_name = "redbullhol_image"
-  
-  image_source_details {
-    source_type = "objectStorageUri"
-    source_uri = "https://objectstorage.eu-frankfurt-1.oraclecloud.com/p/z5YCJTj_N5yMUIfygE6Xx39R5jkoothfDchyfONffyy2v-jVqXlUYI88VG5v8Akn/n/emeasespainsandbox/b/publichol/o/redbullhol-20210805-1051"
-  }
-}
-
 #### redbull_lab1
 resource oci_core_instance redbull_lab1 {
   availability_domain = data.oci_identity_availability_domain.AD1.name
   compartment_id      = oci_identity_compartment.redbullhol.id
-  shape = local.compute_shape
+  shape = "VM.Standard2.2"
   
   agent_config {
     is_management_disabled = "false"
@@ -41,11 +23,11 @@ resource oci_core_instance redbull_lab1 {
   display_name      = "redbulllab1"
   
   metadata = {
-    "ssh_authorized_keys" = var.ssh_public_key
+    ssh_authorized_keys = local.ssh_public_keys
   }
-
+  
   source_details {
-    source_id = oci_core_image.redbullhol_image.id    
+    source_id = local.list_images[var.compute_image_name].id
     source_type = "image"
   }
   
@@ -54,5 +36,96 @@ resource oci_core_instance redbull_lab1 {
   }
   defined_tags = {
     "${oci_identity_tag_namespace.devrel.name}.${oci_identity_tag.release.name}" = local.release
+  }
+  
+    connection {
+    agent       = false
+    timeout     = "60m"
+    host        = oci_core_instance.redbull_lab1.public_ip
+    user        = "opc"
+    private_key = tls_private_key.public_private_key_pair.private_key_pem
+  }
+
+  provisioner "file" {
+    source      = "scripts/jupyterlab.service"
+    destination = "/home/opc/jupyterlab.service"
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
+  }
+
+  provisioner "file" {
+    source      = "scripts/launchapp.sh"
+    destination = "/home/opc/launchapp.sh"
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
+  }
+
+  provisioner "file" {
+    source      = "scripts/launchjupyterlab.sh"
+    destination = "/home/opc/launchjupyterlab.sh"
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
+  }
+
+  provisioner "file" {
+    source      = "scripts/script_install_pyenv.sh"
+    destination = "/home/opc/script_install_pyenv.sh"
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
+  }
+
+  provisioner "file" {
+    source      = "scripts/script_install_root.sh"
+    destination = "/home/opc/script_install_root.sh"
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
+  }
+
+  provisioner "file" {
+    source      = "scripts/checkpyenv.py"
+    destination = "/home/opc/checkpyenv.py"
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /home/opc/script_install_pyenv.sh",
+      "chmod +x /home/opc/script_install_root.sh",
+      "chmod +x /home/opc/launchjupyterlab.sh",
+      "chmod +x /home/opc/launchapp.sh",
+      "/home/opc/script_install_pyenv.sh",
+      "sudo -i /home/opc/script_install_root.sh"
+    ]
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
   }
 }
