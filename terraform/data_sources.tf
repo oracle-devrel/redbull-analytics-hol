@@ -43,3 +43,18 @@ data "oci_core_images" "this" {
     values = ["AVAILABLE"]
   }
 }
+
+data "oci_core_images" "ol79" {
+  compartment_id = var.compartment_ocid
+  operating_system = "Oracle Linux"
+  filter {
+    name = "display_name"
+    values = ["^Oracle-Linux-7.9-([\\.0-9-]+)$"]
+    regex = true
+  }
+}
+
+output "OS_version" {
+  description = "Oracle Linux version"
+  value       = data.oci_core_images.ol79.images.0.display_name
+}

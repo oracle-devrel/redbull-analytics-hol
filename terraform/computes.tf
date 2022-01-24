@@ -27,7 +27,7 @@ resource oci_core_instance redbull_lab1 {
   }
   
   source_details {
-    source_id = local.list_images[var.compute_image_name].id
+    source_id = local.list_images[var.compute_image_name==""?data.oci_core_images.ol79.images.0.display_name:var.compute_image_name].id
     source_type = "image"
   }
   

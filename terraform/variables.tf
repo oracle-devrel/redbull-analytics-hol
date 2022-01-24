@@ -62,5 +62,5 @@ variable "private_key_password" {
 variable "compute_image_name" {
   type = string
   description = "The name of the compute image to use for the compute instances."
-  default = "Oracle-Linux-7.9-2021.08.27-0"
+  default = ""
 }
