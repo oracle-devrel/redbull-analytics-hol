@@ -51,8 +51,57 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
     _**Note:** You should not be on VPN when opening Jupyter Lab._
 
     ![Jupyter Login](./docs/red-bull-hol-3b-jupyter-login.jpg)
-10. Log in with the jupyter token and assign a password like `Redbull1`.
-11. You should now see the Jupyter Lab. Navigate in the sidebar to `/redbull-analytics-hol/beginners/` to see the Jupyter notebooks for this lab.
+10. Retrieve the token to log in to the JupyterLab. For that, Open the PuTTY utility from the Windows start menu.
+
+    ![Opening Putty](./docs/red-bull-hol-10.jpg)
+11. In the **Host Name** (or IP address) dialog box, enter the Public IP address of your OCI Compute Instance. The Public IP of your instance should have been pasted in your text file.
+
+    ![Entering Public IP](./docs/red-bull-hol-11.jpg)
+12. Under **Category**, expand **Connection** and then select the **Data** field. Enter **opc**. OCI instances will default to the username **opc** if they have Oracle Linux's Operating System installed.
+
+    ![](./docs/red-bull-hol-3.jpg)
+13. Under **Connection**, expand **SSH** and select the **Auth** category.
+
+    ![](./docs/red-bull-hol-14.jpg)
+14. Click on the **Browse** button and locate the private key file you created in the earlier step. Once selected, click **Open**.
+
+    ![](./docs/red-bull-hol-15.jpg)
+15. Now, click the **Open** button in PuTTY to initiate the SSH connection to your cloud instance.
+
+    ![](./docs/red-bull-hol-16.jpg)
+16. Click **Accept** to bypass the Security Alert about the uncached key.
+
+    ![](./docs/red-bull-hol-17.jpg)
+17. Connection successful. You are now securely connected to your OCI Cloud instance.
+
+    ![](./docs/red-bull-hol-18.jpg)
+18. Enter the following command: ```pwd```
+
+    ![](./docs/red-bull-hol-19.jpg)
+19. Enter the following command: ```cd ./redbullenv/bin```
+
+    ![](./docs/red-bull-hol-20.jpg)
+20. Enter the following command: ```./jupyter server list```
+
+    ![](./docs/red-bull-hol-12.jpg)
+21. Once executed, **copy the token string** (token string appears within "**token=**" and "**:: /home/opc**") and **paste** it into your text file. We will need this token string to enter into the Jupyter notebook login screen.
+
+    ![](./docs/red-bull-hol-12.jpg)
+22. **Close** the PuTTY utility process.
+
+    ![](./docs/red-bull-hol-12.jpg)
+23. Next, open a new tab in your browser to load up the web UI for JupyterLab. Paste the **jupyter_url** you copied to your text file. The URL resembles **https://xxx.xxx.xx.xx:888** (substituting the Public IP of your instance). JupyterLab is running on port 8888, so when you navigate to this URL you should see the Jupyter login.
+
+    _**Note:** it is recommended to be off any VPN when opening JupyterLab._
+
+    ![](./docs/red-bull-hol-12.jpg)
+24. We can now use the token string to enter into the Jupyter notebook login screen. We can also set a password for the notebook so that in the future, we can use the password rather than a token authentication. Under the **"Setup a Password"** section, **paste** in the **token string** from your text file. Set the **New Password** to anything you want, like **Redbull1**. 
+
+    ![](./docs/red-bull-hol-12.jpg)
+25. Then click **Log in and set new password**. 
+
+    ![](./docs/red-bull-hol-12.jpg)
+26. You should now see the Jupyter Lab. Navigate in the sidebar to `/redbull-analytics-hol/beginners/` to see the Jupyter notebooks for this lab.
 
 The notebooks are numbered and you'll progress through them in order. These will walk you through collecting and analyzing the data we'll use to predict some races.
 
