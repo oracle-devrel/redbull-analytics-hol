@@ -97,6 +97,7 @@ For Windows, and step-by-step instructions for Mac/Linux, please see the [Oracle
     ![Opening tab](./docs/red-bull-hol-23.jpg)
 24. We can now use the token string to enter into the Jupyter notebook login screen. We can also set a password for the notebook so that in the future, we can use the password rather than a token authentication. Under the **"Setup a Password"** section, **paste** in the **token string** from your text file. Set the **New Password** to anything you want, like **Redbull1**. Then click **Log in and set new password**. 
 
+    ![Setting new passwrd](./docs/red-bull-hol-24.jpg)
 25. You should now see the Jupyter Lab. Navigate in the sidebar to `/redbull-analytics-hol/beginners/` to see the Jupyter notebooks for this lab.
 
 The notebooks are numbered and you'll progress through them in order. These will walk you through collecting and analyzing the data we'll use to predict some races.
