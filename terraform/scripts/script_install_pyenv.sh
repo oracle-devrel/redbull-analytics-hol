@@ -15,6 +15,7 @@ sudo yum install git -y
 
 # install jupyterlab
 pip3 install jupyterlab
+pip3 install runipy
 
 # Upgrade Environment
 /home/opc/redbullenv/bin/python -m pip install --upgrade pip

@@ -64,3 +64,9 @@ variable "compute_image_name" {
   description = "The name of the compute image to use for the compute instances."
   default = ""
 }
+
+variable "quickstart" {
+  type = bool
+  description = "If true, prepare the dataset and train a basic model"
+  default = false
+}

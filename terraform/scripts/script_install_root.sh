@@ -1,6 +1,14 @@
 #!/bin/bash
 # Copyright (c) 2021 Oracle and/or its affiliates.
 
+su opc -c "mkdir /home/opc/log"
+
+# if quickstart
+([[ ! -z "$1" ]] && [ $1 -eq 1 ] 2>/dev/null) && {
+   
+su opc -c "/home/opc/quickstart.sh" &     
+}
+
 # create script to start, stop service "jupyterlab"
 cat /home/opc/jupyterlab.service > /etc/systemd/system/jupyterlab.service
 
