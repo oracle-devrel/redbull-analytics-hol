@@ -8,8 +8,8 @@ cd /home/opc/redbull-analytics-hol/beginners/web/
 
 if [ "$1" = "start" ]
 then
-nohup python3 app.py  > /home/opc/nohup_app.log 2>&1 &
-echo $! > /home/opc/app.pid
+nohup python3 app.py  > /home/opc/log/app.log 2>&1 &
+echo $! > /home/opc/log/app.pid
 else
-kill $(cat /home/opc/app.pid)
+kill $(cat /home/opc/log/app.pid)
 fi

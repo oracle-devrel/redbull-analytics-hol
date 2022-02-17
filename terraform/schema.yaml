@@ -24,6 +24,7 @@ variableGroups:
       - ${redbull_compartment}
       - ${ssh_public_key}
       - ${compute_image_name}
+      - ${quickstart}
 
 variables:
   redbull_compartment:
@@ -36,6 +37,12 @@ variables:
     description: The public key to install on the compute for SSH access.
     type: oci:core:ssh:publickey
     required: false
+  quickstart:
+    title: Quickstart
+    type: boolean
+    description: Prepare the dataset and train a basic model for the Race Predictor. *NOTE* When enabled, the instance provisioning and setup can take up to 45 minutes.
+    required: true
+    default: false
   compute_image_name:
     title: Compute Image
     type: string

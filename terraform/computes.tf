@@ -112,14 +112,48 @@ resource oci_core_instance redbull_lab1 {
     }
   }
 
+  provisioner "file" {
+    source      = "scripts/generate_fone_dataset.py"
+    destination = "/home/opc/generate_fone_dataset.py"
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
+  }
+
+  provisioner "file" {
+    source      = "scripts/extract_fone_races.py"
+    destination = "/home/opc/extract_fone_races.py"
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
+  }
+
+  provisioner "file" {
+    source      = "scripts/quickstart.sh"
+    destination = "/home/opc/quickstart.sh"
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
+  }
+
   provisioner "remote-exec" {
     inline = [
       "chmod +x /home/opc/script_install_pyenv.sh",
       "chmod +x /home/opc/script_install_root.sh",
       "chmod +x /home/opc/launchjupyterlab.sh",
       "chmod +x /home/opc/launchapp.sh",
+      "chmod +x /home/opc/quickstart.sh",
       "/home/opc/script_install_pyenv.sh",
-      "sudo -i /home/opc/script_install_root.sh"
+      "sudo -i /home/opc/script_install_root.sh ${var.quickstart ? 1 : 0}"
     ]
     
     connection {
