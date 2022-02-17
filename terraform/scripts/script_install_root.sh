@@ -6,7 +6,7 @@ su opc -c "mkdir /home/opc/log"
 # if quickstart
 ([[ ! -z "$1" ]] && [ $1 -eq 1 ] 2>/dev/null) && {
    
-su opc -c "/home/opc/quickstart.sh" &     
+su opc -c "/home/opc/quickstart.sh"     
 }
 
 # create script to start, stop service "jupyterlab"
