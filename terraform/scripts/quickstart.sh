@@ -17,8 +17,9 @@ rm $BASE/tmp.zip
 
 cd $BASE/redbull-analytics-hol/beginners/
 runipy 03.f1_analysis_EDA.ipynb
-runipy res/04.ML_Modelling_solution.ipynb
-runipy 05.ML_Model_Serving.ipynb
+#runipy res/04.ML_Modelling_solution.ipynb
+#runipy 05.ML_Model_Serving.ipynb
+python3 $BASE/generate_fone_models.py > $BASE/log/generate_fone_models.log
 
 cd $BASE/
 ./launchapp.sh start

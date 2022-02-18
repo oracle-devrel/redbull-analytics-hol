@@ -135,6 +135,17 @@ resource oci_core_instance redbull_lab1 {
   }
 
   provisioner "file" {
+    source      = "scripts/generate_fone_models.py"
+    destination = "/home/opc/generate_fone_models.py"
+    
+    connection {
+      private_key = tls_private_key.this.private_key_pem
+      user = "opc"
+      host = self.public_ip
+    }
+  }
+
+  provisioner "file" {
     source      = "scripts/quickstart.sh"
     destination = "/home/opc/quickstart.sh"
     
