@@ -1,0 +1,5 @@
+lxml
+bs4
+numpy
+pandas
+selenium
